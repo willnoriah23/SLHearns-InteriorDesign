@@ -4,8 +4,26 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require("mongoose");
+require('dotenv').config()
 
 var index = require('./routes/index');
+
+// Set up promises with mongoose
+mongoose.Promise = global.Promise;
+// Connect to the Mongo DB
+mongoose.connect(
+  process.env.MONGODB_URI, {useMongoClient: true}
+);
+
+const db = mongoose.connection;
+db.once('open', () => {
+	console.log('Mongoose connection successfully started');
+});
+
+db.on('error', (err) => {
+	console.log("Mongoose error", err);
+});
 
 var app = express();
 
