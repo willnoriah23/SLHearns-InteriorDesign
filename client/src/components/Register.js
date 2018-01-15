@@ -1,30 +1,36 @@
 import React from 'react';
 import axios from 'axios';
-// import User from '../../../model/users.js';
 
 class Register extends React.Component {
   constructor () {
     super();
-
     this.state = {}
   }
 
+  //Obtain user input
   getValue = (event) => {
-    // Updates the input state
     this.setState(
       {
-        [event.target.name]: event.target.value
+        [event.target.name]: event.target.value.trim()
       }
     );
   }
 
+  // Send data to backend to create user/check if user is already in db.
   sendData = (event) => {
-    // Keep the page from refreshing
     event.preventDefault();
 
+    //TODO front-end form validation
     axios.post('/register', this.state)
-      .then((data) => {
-        console.log(data);
+      .then((res) => {
+
+        if (res === 200) {
+          // TODO redirect to login page.
+          this.setState({status: res.data.status})
+        } else {
+          // Show status error -- "User already exists."
+          this.setState({status: res.data.status})
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -34,9 +40,21 @@ class Register extends React.Component {
   render() {
     return (
       <div>
+        <h1>Sign Up Page</h1>
+        <p>{this.state.status}</p>
         <form>
-          <input type="text" name="username" onChange={this.getValue} /><br />
-          <input type="password" name="password" onChange={this.getValue} /><br />
+          <input
+          type="text"
+          name="username"
+          onChange={this.getValue} />
+          <br />
+
+          <input
+          type="password"
+          name="password"
+          onChange={this.getValue} />
+          <br />
+
           <a href="/register"><button onClick={this.sendData}>Sign Up</button></a>
         </form>
       </div>
@@ -46,18 +64,3 @@ class Register extends React.Component {
 
 
 export default Register;
-/*
-
-  // Creates a single user.
-  User.create({
-    username: "tom@gmail.com",
-    password: "testing"
-  }, function(err, user) {
-    if (err) {
-      console.log("Something went wrong");
-    } else {
-      console.log(user);
-    }
-  })
-
-*/
