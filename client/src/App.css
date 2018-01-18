@@ -1,8 +1,22 @@
-.slideshowImg {
-  height: 700px;
-  width: 1000px;
+.image-gallery-image > img {
+  /*height: inherit;*/
+  width: 70%;
+  margin-top: 150px;
+  margin-right: 15%;
+  margin-left: 15%;
 }
 
+.imageGallery {
+  text-justify: center;
+}
+
+.image-gallery {
+  height: 600px;
+}
+
+.image-gallery-right-nav, .image-gallery-left-nav {
+  display: none;
+}
 
 .App {
   text-align: center;
@@ -32,3 +46,16 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+/*# SCSS*/
+/*@import "../node_modules/react-image-gallery/styles/scss/image-gallery.scss";*/
+
+/*# CSS*/
+@import "../node_modules/react-image-gallery/styles/css/image-gallery.css";
+
+/*# Webpack*/
+/*@import "../node_modules/react-image-gallery/styles/css/image-gallery.css";*/
+
+/*# Stylesheet with no icons*/
+/*node_modules/react-image-gallery/styles/scss/image-gallery-no-icon.scss*/
+/*node_modules/react-image-gallery/styles/css/image-gallery-no-icon.css*/
