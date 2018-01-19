@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 class Register extends React.Component {
   constructor () {
@@ -16,6 +17,7 @@ class Register extends React.Component {
     );
   }
 
+
   // Send data to backend to create user/check if user is already in db.
   sendData = (event) => {
     event.preventDefault();
@@ -27,6 +29,8 @@ class Register extends React.Component {
         if (res === 200) {
           // TODO redirect to login page.
           this.setState({status: res.data.status})
+          // localStorage.setItem('isAuthenticated', JSON.stringify(true));
+          this.props.history.push('/dashboard');
         } else {
           // Show status error -- "User already exists."
           this.setState({status: res.data.status})
@@ -55,7 +59,7 @@ class Register extends React.Component {
           onChange={this.getValue} />
           <br />
 
-          <a href="/register"><button onClick={this.sendData}>Sign Up</button></a>
+          <Link to="/register"><button onClick={this.sendData}>Sign Up</button></Link>
         </form>
       </div>
     )

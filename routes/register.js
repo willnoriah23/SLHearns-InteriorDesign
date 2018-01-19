@@ -1,22 +1,24 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
+const bcrypt = require('bcrypt');
 
 
 router.post('/', (req, res) => {
   const { username, password } = req.body;
 
-  // Check if user is already in the database.
+  const salt = bcrypt.genSaltSync(12);
+  const hash = bcrypt.hashSync(password, salt);
+
   User.findOne({username})
     .then(function(user) {
       if (user) {
-        //status(409)
         res.json({status: "User already exists."});
       } else {
         // Creates a single user.
         User.create({
           username: username,
-          password: password
+          password: hash
         }, function(err, user) {
           if (err) {
             console.log("Something went wrong");

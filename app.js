@@ -5,13 +5,10 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const session = require('express-session');
-const passport = require('passport');
-const passportLocal = require('passport-local');
-const passportLocalMongoose = require('passport-local-mongoose');
+// const User = require('./models/user.js');
 require('dotenv').config()
 
-const index = require('./routes/index');
+// const index = require('./routes/index');
 const register = require('./routes/register');
 const login = require('./routes/login');
 
@@ -33,42 +30,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Passport Setup
-app.use(passport.initialize());
-app.use(passport.session());
-
-passport.serializeUser(function(user, done) {
-  done(null, user.id);
-});
-
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
-    done(err, user);
-  });
-});
-
-
-app.use('/', index);
+// app.use('/', index);
 app.use('/register', register)
 app.use('/login', login);
 
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  const err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+
+app.listen(3001, () => {
+  console.log("Server is starting at port ", 3001);
 });
-
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
-
-module.exports = app;

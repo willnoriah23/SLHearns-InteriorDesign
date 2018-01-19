@@ -23,9 +23,10 @@ class Login extends React.Component {
     axios.post('/login', this.state)
       .then((data) => {
         console.log(data);
+        this.props.history.push("/member")
       })
       .catch((err) => {
-        console.log(err);
+        console.log("Error", err.response);
       })
   }
 
