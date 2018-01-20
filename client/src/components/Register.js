@@ -29,10 +29,8 @@ class Register extends React.Component {
         if (res === 200) {
           // TODO redirect to login page.
           this.setState({status: res.data.status})
-          // localStorage.setItem('isAuthenticated', JSON.stringify(true));
-          this.props.history.push('/dashboard');
+          this.props.history.push('/login');
         } else {
-          // Show status error -- "User already exists."
           this.setState({status: res.data.status})
         }
       })

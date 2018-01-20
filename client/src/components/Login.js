@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 class Login extends React.Component {
   constructor () {
@@ -47,7 +48,7 @@ class Login extends React.Component {
           onChange={this.getValue} />
           <br />
 
-          <a href="/login"><button onClick={this.sendData}>Login</button></a>
+          <Link to="/login"><button onClick={this.sendData}>Login</button></Link>
         </form>
       </div>
     )

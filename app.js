@@ -11,10 +11,12 @@ require('dotenv').config()
 // const index = require('./routes/index');
 const register = require('./routes/register');
 const login = require('./routes/login');
+const emailer = require('./routes/emailer');
+const form = require('./routes/form');
 
 // Mongoose Setup
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI, {useMongoClient: true});
+mongoose.connect(MONGODB_URI, {useMongoClient: true});
 
 const db = mongoose.connection;
 db.once('open', () => console.log('Mongoose connection successfully started'));
@@ -31,9 +33,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use('/', index);
-app.use('/register', register)
+app.use('/register', register);
 app.use('/login', login);
-
+app.use('/sendEmail', emailer);
+app.use('/sendForm', form)
 
 
 app.listen(3001, () => {

@@ -5,20 +5,25 @@ const bcrypt = require('bcrypt');
 
 
 router.post('/', (req, res) => {
-  const { name, password } = req.body;
-
-  const salt = bcrypt.genSaltSync(12);
-  const hash = bcrypt.hashSync(password, salt);
-
-  User.findOne({name})
+    User.findOne({name})
     .then(function(user) {
       if (user) {
-        res.json({status: "User already exists."});
+        res.json({status: "We already have this data."});
       } else {
         // Creates a single user.
         User.create({
           name: name,
-          password: hash
+          email: email,
+          password: hash,
+          address: address,
+          phone: phone,
+          bath: {
+            master: master,
+            second: second
+          },
+          kitchen: {
+            cook: cook
+          }
         }, function(err, user) {
           if (err) {
             console.log("Something went wrong");
@@ -34,3 +39,12 @@ router.post('/', (req, res) => {
 });
 
 module.exports = router;
+
+/*
+  bath: {
+    master: Boolean,
+    second: Boolean
+  }
+  kitchen: {
+    cook: String}
+*/
