@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './App.css';
 import ImageGallery from '../src/ImageGallery.jsx';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Navbar from './components/Navbar';
+//import Questionnaire from './components/Questionnaire';
+
 
 const PREFIX_URL = 'http://res.cloudinary.com/noriahjwill/image/upload/';
   
@@ -33,8 +37,6 @@ export default class App extends Component {
     ];
   }
 
-
-      
   _componentDidUpdate(prevProps, prevState) {
     if (this.state.slideInterval !== prevState.slideInterval ||
         this.state.slideDuration !== prevState.slideDuration) {
@@ -83,40 +85,45 @@ export default class App extends Component {
    render() {
     return (
 
+    <MuiThemeProvider>  
       <section className='app'>
-      <div className="imageGallery">
-        <ImageGallery
-          autoPlay={true}
-          disableArrowKeys={true}
-          ref={i => this._imageGallery = i}
-          items={this.images}
-          lazyLoad={false}
-          onClick={this._onImageClick.bind(this)}
-          onImageLoad={this._onImageLoad}
-          onSlide={this._onSlide.bind(this)}
-          onPause={this._onPause.bind(this)}
-          onScreenChange={this._onScreenChange.bind(this)}
-          onPlay={this._onPlay.bind(this)}
-          infinite={this.state.infinite}
-          //showBullets={this.state.showBullets}
-          showFullscreenButton={false}//{this.state.showFullscreenButton && this.state.showGalleryFullscreenButton}
-          showPlayButton={false}//{this.state.showPlayButton && this.state.showGalleryPlayButton}
-          showThumbnails={false}//{this.state.showThumbnails}
-          //showIndex={this.state.showIndex}
-          //showNav={this.state.showNav}
-          //thumbnailPosition={this.state.thumbnailPosition}
-          slideDuration={parseInt(this.state.slideDuration)}
-          slideInterval={parseInt(this.state.slideInterval)}
-          slideOnThumbnailHover={this.state.slideOnThumbnailHover}
-          additionalClass="app-image-gallery"
-        />
+
+      <div className="appName">
+          <h1>SL Hearns Interior Design </h1>
       </div>
 
+      <Navbar />
+
+        <div className="imageGallery">
+          <ImageGallery
+            autoPlay={true}
+            disableArrowKeys={true}
+            ref={i => this._imageGallery = i}
+            items={this.images}
+            lazyLoad={false}
+            onClick={this._onImageClick.bind(this)}
+            onImageLoad={this._onImageLoad}
+            onSlide={this._onSlide.bind(this)}
+            onPause={this._onPause.bind(this)}
+            onScreenChange={this._onScreenChange.bind(this)}
+            onPlay={this._onPlay.bind(this)}
+            infinite={this.state.infinite}
+            //showBullets={this.state.showBullets}
+            showFullscreenButton={false}//{this.state.showFullscreenButton && this.state.showGalleryFullscreenButton}
+            showPlayButton={false}//{this.state.showPlayButton && this.state.showGalleryPlayButton}
+            showThumbnails={false}//{this.state.showThumbnails}
+            //showIndex={this.state.showIndex}
+            //showNav={this.state.showNav}
+            //thumbnailPosition={this.state.thumbnailPosition}
+            slideDuration={parseInt(this.state.slideDuration)}
+            slideInterval={parseInt(this.state.slideInterval)}
+            slideOnThumbnailHover={this.state.slideOnThumbnailHover}
+            additionalClass="app-image-gallery"
+          />
+        </div>
       
       </section>
+      </MuiThemeProvider>
       );
   }
 }
-
-
-// ReactDOM.render(<App/>, document.getElementById('container'));

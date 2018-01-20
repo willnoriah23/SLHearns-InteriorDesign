@@ -7,12 +7,18 @@
   },
   "dependencies": {
     "body-parser": "~1.18.2",
+    "bootstrap": "^3.3.7",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.15.5",
     "jade": "~1.11.0",
+    "material-ui": "^0.20.0",
     "morgan": "~1.9.0",
+    "react": "^16.2.0",
+    "react-bootstrap": "^0.32.0",
+    "react-dom": "^16.2.0",
     "react-image-gallery": "^0.8.7",
+    "reactstrap": "^5.0.0-alpha.4",
     "serve-favicon": "~2.4.5"
   },
   "devDependencies": {
