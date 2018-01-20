@@ -88,13 +88,19 @@ export default class App extends Component {
     <MuiThemeProvider>  
       <section className='app'>
 
-      <div className="appName">
-          <h1>SL Hearns Interior Design </h1>
-      </div>
-
       <Navbar />
 
+      <div className="appName">
+          <h1>SL Hearns</h1>
+          <h1>Interior Design</h1>
+          <h2>Kitchen and Bath Specialist</h2>
+
+           
+      </div>
+
+
         <div className="imageGallery">
+          
           <ImageGallery
             autoPlay={true}
             disableArrowKeys={true}

@@ -1,24 +1,38 @@
 import React from 'react';
-import Paper from 'material-ui/Paper';
-import Menu from 'material-ui/Menu';
+import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
+import RaisedButton from 'material-ui/RaisedButton';
 
-const style = {
-  display: 'inline-block',
-  margin: '16px 32px 16px 0',
-};
+export default class DrawerUndockedExample extends React.Component {
 
-const MenuExampleSimple = () => (
-  <div>
-    <Paper style={style}>
-      <Menu>
-        <MenuItem primaryText="Home" />
-        <MenuItem primaryText="Services" />
-        <MenuItem primaryText="Questionnaire" />
-        <MenuItem primaryText="Contact" />
-      </Menu>
-    </Paper>
-  </div>
-);
+  constructor(props) {
+    super(props);
+    this.state = {open: false};
+  }
 
-export default MenuExampleSimple;
+  handleToggle = () => this.setState({open: !this.state.open});
+
+  handleClose = () => this.setState({open: false});
+
+  render() {
+    return (
+      <div className="navmenu">
+        <RaisedButton
+          label="SL Hearns"
+          onClick={this.handleToggle}
+        />
+        <Drawer
+          docked={false}
+          width={200}
+          open={this.state.open}
+          onRequestChange={(open) => this.setState({open})}
+        >
+          <MenuItem onClick={this.handleClose}>Home</MenuItem>
+          <MenuItem onClick={this.handleClose}>Portfolio</MenuItem>
+          <MenuItem onClick={this.handleClose}>Questionnaire</MenuItem>
+          <MenuItem onClick={this.handleClose}>Contact</MenuItem>
+        </Drawer>
+      </div>
+    );
+  }
+}
