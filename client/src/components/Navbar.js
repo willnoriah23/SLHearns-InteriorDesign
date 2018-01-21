@@ -1,24 +1,34 @@
 import React from 'react';
-import Paper from 'material-ui/Paper';
-import Menu from 'material-ui/Menu';
+import { Route, NavLink } from 'react-router-dom';
+import Questionnaire from './Questionnaire';
+import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
+import RaisedButton from 'material-ui/RaisedButton';
 
-const style = {
-  display: 'inline-block',
-  margin: '16px 32px 16px 0',
-};
+export default class DrawerSimpleExample extends React.Component {
 
-const MenuExampleSimple = () => (
-  <div>
-    <Paper style={style}>
-      <Menu>
-        <MenuItem primaryText="Home" />
-        <MenuItem primaryText="Services" />
-        <MenuItem primaryText="Questionnaire" />
-        <MenuItem primaryText="Contact" />
-      </Menu>
-    </Paper>
-  </div>
-);
+  constructor(props) {
+    super(props);
+    this.state = {open: false};
+  }
 
-export default MenuExampleSimple;
+  handleToggle = () => this.setState({open: !this.state.open});
+
+  render() {
+      console.log(this.state.open);
+    return (
+      <div>
+        <RaisedButton
+          label="Toggle Drawer"
+          onClick={this.handleToggle}
+        />
+        <Drawer open={this.state.open}>
+          <MenuItem><NavLink to = "/questionnaire" onClick={this.handleToggle}> Questionnaire</NavLink> </MenuItem>
+
+          <MenuItem>Menu Item 2</MenuItem>
+        </Drawer>
+        <Route path="/questionnaire" exact component={Questionnaire} />
+      </div>
+    );
+  }
+}

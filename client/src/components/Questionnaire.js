@@ -51,4 +51,4 @@ const Questionnaire = () => (
   </div>
 );
 
-export default TextFieldExampleSimple;
+export default Questionnaire;
