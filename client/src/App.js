@@ -4,6 +4,7 @@ import './App.css';
 import ImageGallery from '../src/ImageGallery.jsx';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Navbar from './components/Navbar';
+import logo from './img/slhlogo.png'
 //import Questionnaire from './components/Questionnaire';
 
 
@@ -88,11 +89,14 @@ export default class App extends Component {
     <MuiThemeProvider>  
       <section className='app'>
 
+      <Navbar />
+      
       <div className="appName">
-          <h1>SL Hearns Interior Design </h1>
+          <img src={logo} className="logo" alt="logo"/> 
+         
       </div>
 
-      <Navbar />
+      
 
         <div className="imageGallery">
           <ImageGallery

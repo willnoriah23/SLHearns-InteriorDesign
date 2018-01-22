@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, NavLink } from 'react-router-dom';
 import Questionnaire from './Questionnaire';
+import Portfolio from './Portfolio';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -19,16 +20,20 @@ export default class DrawerSimpleExample extends React.Component {
     return (
       <div>
         <RaisedButton
-          label="Toggle Drawer"
+          label="SL Hearns"
           onClick={this.handleToggle}
         />
         <Drawer open={this.state.open}>
+
           <MenuItem><NavLink to = "/questionnaire" onClick={this.handleToggle}> Questionnaire</NavLink> </MenuItem>
 
-          <MenuItem>Menu Item 2</MenuItem>
+          <MenuItem><NavLink to = "/portfolio" onClick={this.handleToggle}> Portfolio</NavLink></MenuItem>
+
         </Drawer>
         <Route path="/questionnaire" exact component={Questionnaire} />
+        <Route path="/portfolio" exact component={Portfolio} />
       </div>
     );
   }
 }
+
