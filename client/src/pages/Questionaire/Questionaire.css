@@ -1,0 +1,55 @@
+/*body {
+  background-color: #E0D7C9;
+}
+*/
+
+
+.image-gallery-image > img {
+    /*height: inherit;*/
+    width: 70%;
+    margin-top: 120px;
+    margin-bottom: 120px;
+    margin-right: 15%;
+    margin-left: 15%;
+    background-color: #E0D7C9;
+}
+
+.imageGallery {
+    text-justify: center;
+}
+
+.image-gallery {
+    height: 600px;
+    background-color: #E0D7C9;
+}
+
+.image-gallery-right-nav, .image-gallery-left-nav {
+    display: none;
+}
+
+.app {
+    position: relative;
+    left: 20px;
+    margin-right: -10px;
+    width: 95%;
+}
+
+/*.header {
+  font-family: 'Quintessential', cursive;
+  font-size: 40px;
+  margin-left: 30px;
+  margin-top: 10px;
+}*/
+
+/*# SCSS*/
+/*@import "../node_modules/react-image-gallery/styles/scss/image-gallery.scss";*/
+
+/*# CSS*/
+@import "../../../node_modules/react-image-gallery/styles/css/image-gallery.css";
+
+/*# Webpack*/
+/*@import "../node_modules/react-image-gallery/styles/css/image-gallery.css";*/
+
+/*# Stylesheet with no icons*/
+/*node_modules/react-image-gallery/styles/scss/image-gallery-no-icon.scss*/
+/*node_modules/react-image-gallery/styles/css/image-gallery-no-icon.css*/
