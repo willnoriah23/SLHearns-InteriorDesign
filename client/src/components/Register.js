@@ -2,52 +2,49 @@ import React from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 
-class Register extends React.Component {
+class Login extends React.Component {
   constructor () {
     super();
     this.state = {}
   }
 
-  //Obtain user input
   getValue = (event) => {
+    // Updates the input state
     this.setState(
       {
-        [event.target.name]: event.target.value.trim()
+        [event.target.name]: event.target.value
       }
     );
   }
 
-
-  // Send data to backend to create user/check if user is already in db.
   sendData = (event) => {
+    // Keep the page from refreshing
     event.preventDefault();
 
-    //TODO front-end form validation
     axios.post('/register', this.state)
-      .then((res) => {
-
-        if (res === 200) {
-          // TODO redirect to login page.
-          this.setState({status: res.data.status})
-          this.props.history.push('/login');
-        } else {
-          this.setState({status: res.data.status})
-        }
+      .then((data) => {
+        console.log(data);
+        this.props.history.push("/login")
       })
       .catch((err) => {
-        console.log(err);
+        console.log("Error", err.response);
       })
   }
 
   render() {
     return (
       <div>
-        <h1>Sign Up Page</h1>
-        <p>{this.state.status}</p>
+        <h1>Registration Page</h1>
         <form>
           <input
           type="text"
-          name="username"
+          name="fullname"
+          onChange={this.getValue} />
+          <br />
+
+          <input
+          type="email"
+          name="email"
           onChange={this.getValue} />
           <br />
 
@@ -57,7 +54,7 @@ class Register extends React.Component {
           onChange={this.getValue} />
           <br />
 
-          <Link to="/register"><button onClick={this.sendData}>Sign Up</button></Link>
+          <Link to="/register"><button onClick={this.sendData}>Login</button></Link>
         </form>
       </div>
     )
@@ -65,4 +62,4 @@ class Register extends React.Component {
 }
 
 
-export default Register;
+export default Login;

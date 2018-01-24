@@ -23,8 +23,7 @@ class Login extends React.Component {
 
     axios.post('/login', this.state)
       .then((data) => {
-        console.log(data);
-        this.props.history.push("/member")
+        this.props.history.push("/users")
       })
       .catch((err) => {
         console.log("Error", err.response);
@@ -37,8 +36,8 @@ class Login extends React.Component {
         <h1>Login Page</h1>
         <form>
           <input
-          type="text"
-          name="username"
+          type="email"
+          name="email"
           onChange={this.getValue} />
           <br />
 
