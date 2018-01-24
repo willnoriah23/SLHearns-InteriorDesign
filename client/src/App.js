@@ -1,21 +1,20 @@
-import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
-import Register from './components/Register.js';
-import Login from './components/Login.js';
-import Member from './components/Member.js';
-// import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Homepage from "./pages/Homepage";
+import Questionaire from "./pages/Questionaire";
+import Portfolio from "./pages/Portfolio";
 
+const App = () =>
 
-class App extends Component {
-  render() {
-    return (
+    <Router>
       <div>
-        <Route path="/register" exact component={Register} />
-        <Route path="/" exact component={Login} />
-        <Route path="/users" component={Member} />
+          <Switch>
+          <Route exact path="/" component={Homepage} />
+          <Route exact path="/questions" component={Questionaire} />
+          <Route exact path="/portfolio" component={Portfolio} />
+          {/*<Route component={NoMatch} />*/}
+        </Switch>
       </div>
-    );
-  }
-}
+    </Router>;
 
 export default App;
