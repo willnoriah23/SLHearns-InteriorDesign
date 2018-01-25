@@ -1,4 +1,13 @@
 export default {
+        Davis: [
+        "http://res.cloudinary.com/noriahjwill/image/upload/v1516153407/Davis_Kitchen_3_x7obs4.jpg",
+        "http://res.cloudinary.com/noriahjwill/image/upload/v1516153452/Davis_Kitchen_8_ej2abj.jpg",
+        "http://res.cloudinary.com/noriahjwill/image/upload/v1516153433/Davis_Kitchen_2_vlhthl.jpg",
+        "http://res.cloudinary.com/noriahjwill/image/upload/v1516153435/Davis_Kitchen_5_teoy3q.jpg",
+        "http://res.cloudinary.com/noriahjwill/image/upload/v1516153451/Davis_Kitchen_7_t11jhj.jpg",
+        "http://res.cloudinary.com/noriahjwill/image/upload/v1516153428/Davis_Kitchen_6_osunl1.jpg",
+        "http://res.cloudinary.com/noriahjwill/image/upload/v1516153414/Davis_Kitchen_1_g3tsgn.jpg"
+        ],
     	Oneil: [
     	"http://res.cloudinary.com/noriahjwill/image/upload/v1516153492/O_Neil_After_Kitchen_006_vhdbqc.jpg", 
 		"http://res.cloudinary.com/noriahjwill/image/upload/v1516153527/O_Neil_After_Kitchen34_mh1uqr.jpg", 
@@ -10,26 +19,13 @@ export default {
     	Erikson: [
     	"http://res.cloudinary.com/noriahjwill/image/upload/v1516153484/Erikson_After_Kitchen_7_hbmied.jpg",
     	"http://res.cloudinary.com/noriahjwill/image/upload/v1516153470/Erikson_After_Kitchen_5_d3rts2.jpg",
-    	"http://res.cloudinary.com/noriahjwill/image/upload/v1516153482/Erikson_After_Kitchen_9_s6wtui.jpg",
-    	"http://res.cloudinary.com/noriahjwill/image/upload/v1516153474/Erikson_After_Kitchen_8_ypjjdo.jpg",
     	"http://res.cloudinary.com/noriahjwill/image/upload/v1516153468/Erikson_After_Kitchen_6_ie35it.jpg",
     	"http://res.cloudinary.com/noriahjwill/image/upload/v1516153467/Erikson_After_Kitchen_4_dhiylm.jpg",
-    	"http://res.cloudinary.com/noriahjwill/image/upload/v1516153464/Erikson_After_Kitchen_2_au3vdn.jpg",
     	"http://res.cloudinary.com/noriahjwill/image/upload/v1516153463/Erikson_After_Kitchen_1_nygyrm.jpg",
-    	"http://res.cloudinary.com/noriahjwill/image/upload/v1516153460/Erikson_After_Kitchen_3_lyjbh5.jpg",
-    	],
-    	Davis: [
-    	"http://res.cloudinary.com/noriahjwill/image/upload/v1516153407/Davis_Kitchen_3_x7obs4.jpg",
-    	"http://res.cloudinary.com/noriahjwill/image/upload/v1516153452/Davis_Kitchen_8_ej2abj.jpg",
-    	"http://res.cloudinary.com/noriahjwill/image/upload/v1516153433/Davis_Kitchen_2_vlhthl.jpg",
-    	"http://res.cloudinary.com/noriahjwill/image/upload/v1516153435/Davis_Kitchen_5_teoy3q.jpg",
-    	"http://res.cloudinary.com/noriahjwill/image/upload/v1516153451/Davis_Kitchen_7_t11jhj.jpg",
-    	"http://res.cloudinary.com/noriahjwill/image/upload/v1516153428/Davis_Kitchen_6_osunl1.jpg",
-    	"http://res.cloudinary.com/noriahjwill/image/upload/v1516153414/Davis_Kitchen_1_g3tsgn.jpg"
+    	"http://res.cloudinary.com/noriahjwill/image/upload/v1516153460/Erikson_After_Kitchen_3_lyjbh5.jpg"
     	],
     	Cook: [
     	"http://res.cloudinary.com/noriahjwill/image/upload/v1516153421/Cook_Kitchen_13_bzomxm.jpg",
-    	"http://res.cloudinary.com/noriahjwill/image/upload/v1516153406/Cook_Kitchen_10_u0zcxu.jpg",
     	"http://res.cloudinary.com/noriahjwill/image/upload/v1516153403/Cook_Kitchen_11_baj0lm.jpg",
     	"http://res.cloudinary.com/noriahjwill/image/upload/v1516153390/Cook_Kitchen_9_vprmoy.jpg",
     	"http://res.cloudinary.com/noriahjwill/image/upload/v1516153386/Cook_Kitchen_2_gygwdc.jpg",

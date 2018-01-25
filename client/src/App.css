@@ -14,6 +14,39 @@
   margin-right: 10px;
 }
 
+h1 {
+  font-family: 'Yantramanav', sans-serif;
+  font-size: 25px;
+  text-align: center;
+}
+
+.contactMe {
+  font-family: 'Yantramanav', sans-serif;
+  margin-left: 200px;
+  margin-right: 200px;
+  margin-top: 80px;
+  line-height: 200%;
+  text-align: center;
+}
+
+.pap {
+  margin-left: 200px;
+  margin-right: 200px;
+  height: 1000px;
+}
+
+h2 {
+  font-family: 'Yantramanav', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 15px;
+  /*text-align: center;*/
+}
+
+p {
+   font-family: 'Yantramanav', sans-serif;
+   font-size: 15px;
+}
 
 .image-gallery-slide {
  background-color: #fff;
@@ -41,21 +74,35 @@
 .image-gallery-right-nav, .image-gallery-left-nav {
   display: none;
 }
-
+/*
 .folioPictures {
   height: 600px;
   width: 800px;
   margin-left: auto;
   margin-right: auto;
   display: block;
+}*/
+
+.folioPictures {
+    width: 600px;
+    height: 500px;
+ /*   padding-bottom: 20px;*/
+    padding: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 0 auto; 
 }
 
 .folioPictures1 {
-  height: 1000px;
-  width: 800px;
+  height: 800px;
+  width: 600px;
   margin-left: auto;
   margin-right: auto;
-  display: block;
+  padding: 15px;
+}
+
+.photoDiv {
+    position: absolute;
 }
 
 
