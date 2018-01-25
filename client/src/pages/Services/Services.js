@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Services.css';
-import '../../img/BeforeAfter.js';
+
 import Nav from "../../components/Nav/Navbar";
 import Logo from "../../components/Logo";
 
@@ -13,10 +13,8 @@ import Divider from 'material-ui/Divider';
 const Traditional = () => (
   <Card>
     <CardHeader />
-    <CardMedia
-      overlay={<CardTitle title="Traditional" />}
-    >
-      <img src="nature-600-337.jpg" alt="" />
+      <CardMedia overlay={<CardTitle title="Traditional" />} >
+      <img src="http://res.cloudinary.com/noriahjwill/image/upload/v1516852841/BA_KitchenTraditionalAfter_seibgt.jpg" />
     </CardMedia>
     <CardActions>
       <FlatButton label="Kitchen: Before" onClick={this.Before} />
@@ -33,10 +31,8 @@ const Traditional = () => (
 const Contemporary = () => (
   <Card>
     <CardHeader />
-    <CardMedia
-      overlay={<CardTitle title="Contemporary" />}
-    >
-      <img src="KitchenTraditionalAfter.jpg" alt="" />
+      <CardMedia overlay={<CardTitle title="Contemporary" />} >
+      <img src="http://res.cloudinary.com/noriahjwill/image/upload/v1516852848/BA_KitchenContemporaryAfter_z54bbr.jpg" />
     </CardMedia>
     <CardActions>
       <FlatButton label="Kitchen: Before" onClick={this.Before} />
@@ -53,10 +49,8 @@ const Contemporary = () => (
 const Transitional = () => (
   <Card>
     <CardHeader />
-    <CardMedia
-      overlay={<CardTitle title="Transitional" />}
-    >
-      <img src="KitchenTraditionalAfter.jpg" alt="" />
+      <CardMedia overlay={<CardTitle title="Transitional" />} >
+      <img src="http://res.cloudinary.com/noriahjwill/image/upload/v1516852849/BA_KitchenTransitionalAfter_mwa95d.jpg" />
     </CardMedia>
     <CardActions>
       <FlatButton label="Kitchen: Before" onClick={this.Before} />
@@ -70,7 +64,6 @@ const Transitional = () => (
   </Card>
 );
 
-const PREFIX_URL = 'http://res.cloudinary.com/noriahjwill/image/upload/';
 
 class Services extends Component {
 
