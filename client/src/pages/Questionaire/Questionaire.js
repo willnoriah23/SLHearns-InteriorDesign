@@ -60,6 +60,7 @@ class Questionaire extends Component {
                     hintText="Phone Number"
                     name="phonenum"
                     id="phonenum"
+                    floatingLabelText="Phone Number"
                     errorText="Please enter your phone number."
                     fullWidth={true}
                 /><br/>

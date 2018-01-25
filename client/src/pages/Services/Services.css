@@ -1,0 +1,16 @@
+body {
+  background-color: #E0D7C9;
+}
+
+
+.app {
+    position: relative;
+    left: 20px;
+    margin-right: -10px;
+    width: 95%;
+}
+
+.center {
+  text-align: center;
+}
+
