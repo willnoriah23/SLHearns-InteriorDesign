@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, NavLink } from 'react-router-dom';
 import Contact from './Contact';
 import Portfolio from './Portfolio';
+import Services from './Services';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -29,10 +30,13 @@ export default class DrawerSimpleExample extends React.Component {
 
           <MenuItem><NavLink to = "/portfolio" onClick={this.handleToggle}> Portfolio</NavLink></MenuItem>
 
+          <MenuItem><NavLink to = "/services" onClick={this.handleToggle}> Services</NavLink></MenuItem>
+
 
         </Drawer>
         <Route path="/contact" exact component={Contact} />
         <Route path="/portfolio" exact component={Portfolio} />
+        <Route path="/services" exact component={Services} />
       </div>
     );
   }

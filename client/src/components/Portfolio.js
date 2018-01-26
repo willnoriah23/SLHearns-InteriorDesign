@@ -60,7 +60,7 @@ class Portfolio extends React.Component {
           	
       <img src={Images.Naegle[this.state.NaegleIndex]} onClick={() => this.changePhoto("NaegleIndex", this.state.maxNaegle)} alt="Naegle Gallery" className="folioPictures1"/>      
             
-      <img src={Images.Tupacz[this.state.TupaczIndex]} onClick={() => this.changePhoto("TupaczIndex", this.state.maxTupacz)} alt="Tupa]cz Gallery" className="folioPictures1"/>
+      <img src={Images.Tupacz[this.state.TupaczIndex]} onClick={() => this.changePhoto("TupaczIndex", this.state.maxTupacz)} alt="Tupacz Gallery" className="folioPictures1"/>
 
       </div>
 
