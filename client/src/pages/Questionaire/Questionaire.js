@@ -9,29 +9,56 @@ import SubmitButton from "../../components/Button/Submitbutton";
 import Nav from "../../components/Nav/Navbar";
 import "./Questionaire.css";
 import Logo from "../../components/Logo";
+import axios from "axios";
 
 
 class Questionaire extends Component {
 
-    state = [
-        {
-            field1: "",
-            field2: "",
-            field3: ""
+    // state = [
+    //     {
+    //         field1: "",
+    //         field2: "",
+    //         field3: ""
 
 
-        }
-    ];
+    //     }
+    // ];
 
-    handleChange1 = (event, index, value) => this.setState({field1: value});
+    // handleChange1 = (event, index, value) => this.setState({field1: value});
 
-    handleChange2 = (event, index, value) => this.setState({field2: value});
+    // handleChange2 = (event, index, value) => this.setState({field2: value});
 
-    handleChange3 = (event, index, value) => this.setState({field3: value});
-    handlesubmit = (event, index, value) => {
-        // write code for submitting code
-    };
+    // handleChange3 = (event, index, value) => this.setState({field3: value});
+    // handlesubmit = (event, index, value) => {
+    //     // write code for submitting code
+    // };
+constructor () {
+    super();
+    this.state = {}
+  }
 
+  getValue = (event) => {
+    // Updates the input state
+    this.setState(
+      {
+        [event.target.name]: event.target.value
+      }
+    );
+  }
+
+  sendData = (event) => {
+    // Keep the page from refreshing
+    event.preventDefault();
+
+    axios.post('/register', this.state)
+      .then((data) => {
+        console.log(data);
+        this.props.history.push("/login")
+      })
+      .catch((err) => {
+        console.log("Error", err.response);
+      })
+  }
 
     render() {
         return (
@@ -41,14 +68,16 @@ class Questionaire extends Component {
 
                 <section className='app'>
                 <TextField
+                    onChange={this.getValue} 
                     hintText="Name"
-                    name={"name"}
-                    id={"name"}
+                    name="fullname"
+                    id="name"
                     floatingLabelText="Name"
                     errorText="Please enter your name."
                     fullWidth={true}
                 /><br/>
                 <TextField
+                    onChange={this.getValue} 
                     hintText="Email"
                     name="email"
                     id="email"
@@ -57,16 +86,34 @@ class Questionaire extends Component {
                     fullWidth={true}
                 /><br/>
                 <TextField
+                    onChange={this.getValue} 
+                    hintText="Password"
+                    name="password"
+                    id="password"
+                    floatingLabelText="Password"
+                    errorText="Please enter a password."
+                    fullWidth={true}
+                /><br/>
+                <TextField
+                    onChange={this.getValue} 
                     hintText="Phone Number"
-                    name="phonenum"
+                    name="phone_number"
                     id="phonenum"
                     errorText="Please enter your phone number."
                     fullWidth={true}
                 /><br/>
+                <TextField
+                    onChange={this.getValue} 
+                    hintText="Address"
+                    name="address"
+                    id="addess"
+                    errorText="Please enter your address"
+                    fullWidth={true}
+                /><br/>
                 <SelectField
+                    onChange={this.getValue} 
                     floatingLabelText="Budget"
-                    value={this.state.field1}
-                    onChange={this.handleChange1}
+                    name="budget"
                     fullWidth={true}
                 >
                     <MenuItem value={1} primaryText="$5,000 - $10,000" />
@@ -76,26 +123,12 @@ class Questionaire extends Component {
                 </SelectField>
                 <br />
 
-                <SelectField
-                    floatingLabelText="Room:"
-                    value={this.state.field2}
-                    onChange={this.handleChange2}
-                    id="roomtype"
-                    fullWidth={true}
-                >
-                    <MenuItem value={1} primaryText="Bath" />
-                    <MenuItem value={2} primaryText="Kitchen" />
-                </SelectField>
-                {/*<KitchenQ/>*/}
-                {this.state.field2 === 1 && <BathroomQ fullWidth={true} value={this.state.field3} handlechange={this.handleChange3}/>}
-                {this.state.field2 === 2 && <KitchenQ fullWidth={true}/>}
 
-                {/*add if statemetn to render different questions*/}
-                <br />
 
                 <TextField
+                    onChange={this.getValue} 
                     hintText="Family Size"
-                    name="famsize"
+                    name="family_size"
                     id="famsize"
                     floatingLabelText="Family Size"
                     errorText="Please provide the size of your family."
@@ -103,8 +136,9 @@ class Questionaire extends Component {
                 /><br/>
 
                 <TextField
+                    onChange={this.getValue} 
                     hintText="Please provide three(3) things you love about the current design."
-                    name="love3"
+                    name="love"
                     id="love3"
                     floatingLabelText="Three things you love."
                     errorText="Please provide at least one thing you currently love."
@@ -115,8 +149,9 @@ class Questionaire extends Component {
 
                 /><br/>
                 <TextField
+                    onChange={this.getValue} 
                     hintText="Please provide three(3) things you do not love about the current design."
-                    name="dontlove3"
+                    name="hate"
                     id="dontlove3"
                     floatingLabelText="Three things you do not love."
                     errorText="Please provide at least one thing you currently do not love."
@@ -126,7 +161,7 @@ class Questionaire extends Component {
                     fullWidth={true}
                 /><br/>
 
-                <SubmitButton handlesubmit={this.handlesubmit} name={"Submit"}>
+                <SubmitButton handlesubmit={this.sendData} name={"Submit"}>
                 </SubmitButton>
 
             </section>
@@ -137,3 +172,25 @@ class Questionaire extends Component {
 
 export default Questionaire;
 
+
+                // <SelectField
+                //     onChange={this.getValue} 
+                //     floatingLabelText="Room:"
+                //     id="roomtype"
+                //     fullWidth={true}
+                // >
+                //     <MenuItem value={1} primaryText="Bath" />
+                //     <MenuItem value={2} primaryText="Kitchen" />
+                // </SelectField>
+                // {/*<KitchenQ/>*/}
+                // {this.state.field2 === 1 && <BathroomQ 
+                //     fullWidth={true} 
+                //     value={this.state.field3} 
+                //     handlechange={this.handleChange3} 
+                //     onChange={this.getValue} />}
+                // {this.state.field2 === 2 && <KitchenQ 
+                //     fullWidth={true} 
+                //     onChange={this.getValue} />}
+
+                // {/*add if statemetn to render different questions*/}
+                // <br />
