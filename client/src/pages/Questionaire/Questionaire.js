@@ -10,6 +10,7 @@ import Nav from "../../components/Nav/Navbar";
 import "./Questionaire.css";
 import Logo from "../../components/Logo";
 import Imageupload from "../../components/Imageupload";
+import Paper from 'material-ui/Paper';
 
 
 class Questionaire extends Component {
@@ -19,7 +20,7 @@ class Questionaire extends Component {
             field1: "",
             field2: "",
             field3: "",
-            logged_in: true
+            logged_in: false
 
         };
 
@@ -45,7 +46,9 @@ class Questionaire extends Component {
 
     render() {
         return (
+
             <MuiThemeProvider>
+                <Paper zDepth={3} className="pap">
                 <Nav />
                 <Logo />
 
@@ -136,14 +139,16 @@ class Questionaire extends Component {
                     rowsMax={4}
                     fullWidth={true}
                 /><br/>
-                    {this.state.logged_in === false ? <Imageupload fullWidth={true} handlesubmit={this.handlesubmit}/> : ""}
+                    {this.state.logged_in === true ? <Imageupload fullWidth={true} handlesubmit={this.handlesubmit}/> : ""}
                 {/*{this.state.logged_in === false && <Imageupload fullWidth={true} handlesubmit={this.handlesubmit}/>}*/}
 
                 <SubmitButton handlesubmit={this.handlesubmit} name={"Submit"}>
                 </SubmitButton>
 
             </section>
+            </Paper>
             </MuiThemeProvider>
+
         )
     }
 }
