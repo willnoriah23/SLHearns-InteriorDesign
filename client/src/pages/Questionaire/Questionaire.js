@@ -9,19 +9,29 @@ import SubmitButton from "../../components/Button/Submitbutton";
 import Nav from "../../components/Nav/Navbar";
 import "./Questionaire.css";
 import Logo from "../../components/Logo";
+import Imageupload from "../../components/Imageupload";
 
 
 class Questionaire extends Component {
 
-    state = [
+    state =
         {
             field1: "",
             field2: "",
-            field3: ""
+            field3: "",
+            logged_in: true
+
+        };
 
 
-        }
-    ];
+
+    componentDidMount() {
+      // if (coookie is logged in) {
+      //     this.setState({obj:{logged_in: true}})
+      //   }
+      //   this.setState({logged_in: true});
+        console.log("this is the logged in value", this.state.logged_in);
+    };
 
     handleChange1 = (event, index, value) => this.setState({field1: value});
 
@@ -91,6 +101,7 @@ class Questionaire extends Component {
                 {this.state.field2 === 2 && <KitchenQ fullWidth={true}/>}
 
                 {/*add if statemetn to render different questions*/}
+
                 <br />
 
                 <TextField
@@ -125,6 +136,8 @@ class Questionaire extends Component {
                     rowsMax={4}
                     fullWidth={true}
                 /><br/>
+                    {this.state.logged_in === false ? <Imageupload fullWidth={true} handlesubmit={this.handlesubmit}/> : ""}
+                {/*{this.state.logged_in === false && <Imageupload fullWidth={true} handlesubmit={this.handlesubmit}/>}*/}
 
                 <SubmitButton handlesubmit={this.handlesubmit} name={"Submit"}>
                 </SubmitButton>
