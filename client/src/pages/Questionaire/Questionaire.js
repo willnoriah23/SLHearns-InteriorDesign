@@ -9,60 +9,47 @@ import SubmitButton from "../../components/Button/Submitbutton";
 import Nav from "../../components/Nav/Navbar";
 import "./Questionaire.css";
 import Logo from "../../components/Logo";
+import Imageupload from "../../components/Imageupload";
+import Paper from 'material-ui/Paper';
 import axios from "axios";
+
 
 
 class Questionaire extends Component {
 
-    // state = [
-    //     {
-    //         field1: "",
-    //         field2: "",
-    //         field3: ""
+    state =
+        {
+            field1: "",
+            field2: "",
+            field3: "",
+            logged_in: false
+
+        };
 
 
-    //     }
-    // ];
 
-    // handleChange1 = (event, index, value) => this.setState({field1: value});
+    componentDidMount() {
+      // if (coookie is logged in) {
+      //     this.setState({obj:{logged_in: true}})
+      //   }
+      //   this.setState({logged_in: true});
+        console.log("this is the logged in value", this.state.logged_in);
+    };
 
-    // handleChange2 = (event, index, value) => this.setState({field2: value});
+    handleChange1 = (event, index, value) => this.setState({field1: value});
 
-    // handleChange3 = (event, index, value) => this.setState({field3: value});
-    // handlesubmit = (event, index, value) => {
-    //     // write code for submitting code
-    // };
-constructor () {
-    super();
-    this.state = {}
-  }
+    handleChange2 = (event, index, value) => this.setState({field2: value});
 
-  getValue = (event) => {
-    // Updates the input state
-    this.setState(
-      {
-        [event.target.name]: event.target.value
-      }
-    );
-  }
-
-  sendData = (event) => {
-    // Keep the page from refreshing
-    event.preventDefault();
-
-    axios.post('/register', this.state)
-      .then((data) => {
-        console.log(data);
-        this.props.history.push("/login")
-      })
-      .catch((err) => {
-        console.log("Error", err.response);
-      })
-  }
+    handleChange3 = (event, index, value) => this.setState({field3: value});
+    handlesubmit = (event, index, value) => {
+        // write code for submitting code
+    };
 
     render() {
         return (
+
             <MuiThemeProvider>
+                <Paper zDepth={3} className="pap">
                 <Nav />
                 <Logo />
 
@@ -121,9 +108,7 @@ constructor () {
                     <MenuItem value={3} primaryText="$15,001 - $20,000" />
                     <MenuItem value={4} primaryText="$20,000+" />
                 </SelectField>
-                <br />
-
-
+                <br /
 
                 <TextField
                     onChange={this.getValue} 
@@ -160,12 +145,16 @@ constructor () {
                     rowsMax={4}
                     fullWidth={true}
                 /><br/>
+                    {this.state.logged_in === true ? <Imageupload fullWidth={true} handlesubmit={this.handlesubmit}/> : ""}
+                {/*{this.state.logged_in === false && <Imageupload fullWidth={true} handlesubmit={this.handlesubmit}/>}*/}
 
                 <SubmitButton handlesubmit={this.sendData} name={"Submit"}>
                 </SubmitButton>
 
             </section>
+            </Paper>
             </MuiThemeProvider>
+
         )
     }
 }
