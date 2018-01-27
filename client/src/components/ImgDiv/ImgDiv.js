@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import Placeholder from '../../img/download.png';
+import Placeholder1 from '../../img/Before_formatted.png';
+import Placeholder2 from '../../img/After_formatted.png';
 import "./ImgDiv.css";
 
 class ImgDiv extends Component {
@@ -8,11 +9,11 @@ class ImgDiv extends Component {
         super(props);
         this.state = {
             before: {
-                img: [Placeholder],
+                img: [Placeholder1],
                 index: 0
             },
             after: {
-                img: [Placeholder],
+                img: [Placeholder2],
                 index: 0
             },
             images:[]

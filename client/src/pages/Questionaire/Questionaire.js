@@ -11,6 +11,7 @@ import "./Questionaire.css";
 import Logo from "../../components/Logo";
 import Imageupload from "../../components/Imageupload";
 import Paper from 'material-ui/Paper';
+import API from "../../utils/API.js";
 
 
 class Questionaire extends Component {
@@ -20,11 +21,9 @@ class Questionaire extends Component {
             field1: "",
             field2: "",
             field3: "",
-            logged_in: false
-
+            logged_in: true,
+            image: ""
         };
-
-
 
     componentDidMount() {
       // if (coookie is logged in) {
@@ -34,13 +33,28 @@ class Questionaire extends Component {
         console.log("this is the logged in value", this.state.logged_in);
     };
 
+    handlechange = (event, index, value) => this.setState({image: event.target.value});
+
     handleChange1 = (event, index, value) => this.setState({field1: value});
 
     handleChange2 = (event, index, value) => this.setState({field2: value});
 
     handleChange3 = (event, index, value) => this.setState({field3: value});
-    handlesubmit = (event, index, value) => {
+
+    handlesubmit = (files) => {
+        const image = files[0];
+        console.log("this is dique the image", image);
         // write code for submitting code
+        // API.uploadimage(image).then(res => console.log(res))
+        //     .catch(err => console.log(err));
+        API.uploadimage(image).end((err, resp) => {
+            if(err){
+                alert(err)
+                return
+            }
+
+            console.log("This is the response", resp);
+        })
     };
 
 
@@ -139,7 +153,7 @@ class Questionaire extends Component {
                     rowsMax={4}
                     fullWidth={true}
                 /><br/>
-                    {this.state.logged_in === true ? <Imageupload fullWidth={true} handlesubmit={this.handlesubmit}/> : ""}
+                    {this.state.logged_in === true ? <Imageupload handleupload={this.handlesubmit}/> : ""}
                 {/*{this.state.logged_in === false && <Imageupload fullWidth={true} handlesubmit={this.handlesubmit}/>}*/}
 
                 <SubmitButton handlesubmit={this.handlesubmit} name={"Submit"}>
