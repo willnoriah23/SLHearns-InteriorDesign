@@ -1,13 +1,28 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const app = express();
+require('dotenv').config()
 
-var index = require('./routes/index');
 
-var app = express();
+const index = require('./routes/index');
+const auth = require('./routes/authRoutes');
+const users = require('./routes/userRoutes');
+const upload = require("./routes/upload");
+app.use("/upload", upload);
+
+
+// Mongoose Setup
+mongoose.Promise = global.Promise;
+mongoose.connect(process.env.DB_NAME);
+
+const db = mongoose.connection;
+db.once('open', () => console.log('Mongoose connection successfully started'));
+db.on('error', (err) => console.log("Mongoose error: ", err));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -18,23 +33,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+app.use('/', auth);
+// app.use('/users', users);
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
-
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+app.listen(3001, function(){
+  console.log("App is listening on port: ", 3001);
 });
 
 module.exports = app;
