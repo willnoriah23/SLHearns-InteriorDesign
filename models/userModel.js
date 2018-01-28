@@ -9,11 +9,17 @@ const userSchema = new mongoose.Schema({
   },
   email: {
       type: String,
-      required:  true
+      required:  true,
+      unique: true
   },
   password: {
       type: String,
       required: true
+  },
+  admin: {
+    type: Boolean,
+    default: false
+
   },
   room: [{
       type: mongoose.SchemaTypes.ObjectId,
