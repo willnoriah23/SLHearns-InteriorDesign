@@ -67,25 +67,5 @@ router.post("/questionaire", function (req, res) {
     .then(function ())
 });
 
-const roomSchema = new mongoose.Schema({
-    address: String,
-    phone_number: {
-        type: String,
-        required: true
-    },
-    budget: String,
-    family_size: String,
-    room: {
-        kitchen: {
-            primary_cook: Boolean
-        },
-        bath: {
-            master_bath: Boolean,
-            secondary_bath: Boolean,
-        }
-    },
-    love: String,
-    hate: String
-});
 
 module.exports = router;
