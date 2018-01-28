@@ -1,0 +1,48 @@
+.image-gallery-slide {
+ background-color: #fff;
+ margin-bottom: 100px;
+}
+
+.image-gallery-image /*> img */{
+  background-color: #fff;
+  /*height: inherit;*/
+  width: 70%;
+  /*margin-top: 50px;*/
+  margin-bottom: 40px;
+  margin-right: 15%;
+  margin-left: 15%;
+}
+.imageGallery {
+  text-justify: center;
+  background-color: #fff;
+}
+
+.image-gallery {
+  height: 600px;
+  background-color: #fff;
+}
+
+.image-gallery-right-nav, .image-gallery-left-nav {
+  display: none;
+}
+
+
+/*.header {
+  font-family: 'Quintessential', cursive;
+  font-size: 40px;
+  margin-left: 30px;
+  margin-top: 10px;
+}*/
+
+/*# SCSS*/
+/*@import "../node_modules/react-image-gallery/styles/scss/image-gallery.scss";*/
+
+/*# CSS*/
+@import "../../../node_modules/react-image-gallery/styles/css/image-gallery.css";
+
+/*# Webpack*/
+/*@import "../node_modules/react-image-gallery/styles/css/image-gallery.css";*/
+
+/*# Stylesheet with no icons*/
+/*node_modules/react-image-gallery/styles/scss/image-gallery-no-icon.scss*/
+/*node_modules/react-image-gallery/styles/css/image-gallery-no-icon.css*/

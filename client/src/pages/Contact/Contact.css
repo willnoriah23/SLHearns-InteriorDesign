@@ -1,0 +1,33 @@
+h1 {
+  font-family: 'Yantramanav', sans-serif;
+  font-size: 25px;
+  text-align: center;
+}
+
+.contactMe {
+  font-family: 'Yantramanav', sans-serif;
+  margin-left: 200px;
+  margin-right: 200px;
+  margin-top: 80px;
+  line-height: 200%;
+  text-align: center;
+}
+
+.pap {
+  margin-left: 200px;
+  margin-right: 200px;
+  height: 1000px;
+}
+
+h2 {
+  font-family: 'Yantramanav', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 15px;
+  /*text-align: center;*/
+}
+
+p {
+   font-family: 'Yantramanav', sans-serif;
+   font-size: 15px;
+}

@@ -1,1 +1,1 @@
-export {default} from "./ImgDiv.js";
+export { default } from "./ImgDiv.js"

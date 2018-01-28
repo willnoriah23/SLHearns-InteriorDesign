@@ -1,0 +1,41 @@
+.folioPictures {
+    width: 600px;
+    height: 500px;
+    padding: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 0 auto;
+   /*box-shadow: 10px 10px 5px grey;*/
+}
+
+.folioPictures:hover {
+   -moz-box-shadow: 1px 1px 25px #999;
+  -webkit-box-shadow: 1px 1px 15px #999;
+  box-shadow: 1px 1px 10px #999;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+}        
+
+.folioPictures1 {
+  height: 800px;
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 25px;
+}  
+  
+  /*box-shadow: 10px 10px 5px grey;*/
+.folioPictures1:hover {
+  -moz-box-shadow: 1px 1px 25px #999;
+  -webkit-box-shadow: 1px 1px 15px #999;
+  box-shadow: 1px 1px 5px #999;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+} 
+
+
+.folio {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}

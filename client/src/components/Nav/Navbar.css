@@ -1,0 +1,9 @@
+.navmenu{
+    position: fixed;
+    z-index: 1;
+}
+
+#navmenu a  {
+    text-decoration: none !important;
+}
+
