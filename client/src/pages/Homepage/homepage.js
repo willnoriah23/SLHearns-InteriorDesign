@@ -91,11 +91,11 @@ class Homepage extends Component {
             <MuiThemeProvider>
                 <Nav />
                 <Logo />
-                <section className='app'>
+                {/*<section className='app'>*/}
 
                     <div className="imageGallery">
                         <ImageGallery
-                            autoPlay={true}
+                            autoPlay={false}
                             disableArrowKeys={true}
                             ref={i => this._imageGallery = i}
                             items={this.images}
@@ -121,7 +121,7 @@ class Homepage extends Component {
                         />
                     </div>
 
-                </section>
+                {/*</section>*/}
             </MuiThemeProvider>
         );
     }

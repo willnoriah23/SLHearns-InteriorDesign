@@ -1,0 +1,20 @@
+.Services {
+    width: 33%;
+    height: 300px;
+    padding-bottom: 25px;
+    padding-right: 25px;
+    position: relative;
+    left: 100px;
+}
+.blurbarea {
+    width: 20%;
+    word-wrap: break-word;
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    left: 87px;
+    padding: 5px;
+
+
+}
+

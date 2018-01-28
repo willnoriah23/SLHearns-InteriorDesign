@@ -4,8 +4,8 @@ import "./Logo.css";
 
 
 const Logo = () => (
-    <div>
-        <img src={logo} className="logo" alt="logo"/>
+    <div className="logo" >
+        <img src={logo} alt="logo"/>
     </div>
 );
 

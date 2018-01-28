@@ -1,0 +1,22 @@
+body {
+    margin-left: 20px;
+    margin-right: 15px;
+}
+
+.intro{
+    position: relative;
+    z-index: 1;
+    padding: 10px;
+    width: 90%;
+    margin-top: 10px;
+}
+
+.blurb {
+    text-align: center;
+}
+
+.pap {
+    margin-left: 100px;
+    margin-right: 100px;
+    height: auto;
+}
