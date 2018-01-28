@@ -3,6 +3,11 @@ import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 
+const style = {
+    textDecoration: 'none',
+}
+
+
 class DrawerUndockedExample extends React.Component {
 
     constructor(props) {
@@ -27,11 +32,11 @@ class DrawerUndockedExample extends React.Component {
                   open={this.state.open}
                   onRequestChange={(open) => this.setState({open})}
               >
-                  <MenuItem onClick={this.handleClose}><a href="/">Home</a></MenuItem>
-                <MenuItem onClick={this.handleClose}><a href="/portfolio">Portfolio</a></MenuItem>
-                <MenuItem onClick={this.handleClose}><a href="/questions">Questionnaire</a></MenuItem>
-                <MenuItem onClick={this.handleClose}><a href="/services">Services</a></MenuItem>
-                <MenuItem onClick={this.handleClose}><a href="/">Contact</a></MenuItem>
+                  <MenuItem onClick={this.handleClose}><a style={style} href="/">Home</a></MenuItem>
+                <MenuItem onClick={this.handleClose}><a style={style} href="/portfolio">Portfolio</a></MenuItem>
+                <MenuItem onClick={this.handleClose}><a style={style} href="/questions">Questionnaire</a></MenuItem>
+                <MenuItem onClick={this.handleClose}><a style={style} href="/services">Services</a></MenuItem>
+                <MenuItem onClick={this.handleClose}><a style={style} href="/contact">Contact</a></MenuItem>
               </Drawer>
             </div>
         );

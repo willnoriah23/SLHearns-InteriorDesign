@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+
+    "google-map-react": "^0.29.0",
+    "react-dropzone": "^4.2.7",
+    "sha1": "^1.1.1",
+    "superagent": "^3.8.2"
     "axios": "^0.17.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
