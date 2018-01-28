@@ -1,1 +1,2 @@
-export { default } from "./images";
+export * from "./images.js";
+export * from "./serviceimg.js";
