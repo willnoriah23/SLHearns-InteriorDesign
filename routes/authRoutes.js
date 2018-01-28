@@ -2,13 +2,9 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const User = require('../models/userModel.js');
-const Room = require('../models/roomModel.js');
 
-// GET users listing.
-// router.get('/', function(req, res, next) {
-//   res.send('respond with a resource');
-// });
+// Require all models
+var db = require("../models");
 
 const generateToken = (_id, username) => {
   const token = jwt.sign({
@@ -87,14 +83,17 @@ router.post("/login", (req, res) => {
 router.get('/users', verifyCookie, (req, res) => {
     res.json({status:"Member signed in successfully!"});
 
-    // User.findOne({
-    //   where: {
-    //     fullname: req.body.fullname
-    //   }
-    // })
-    //   .then((data) => {
-    //     console.log("User logged in!")
-    //   })
+    db.User.findOne({req.body.fullname})
+    .then(function (user) {
+      res.json({
+        fullname: req.body.fullname,
+        email: req.body.email,
+        room: req.body.room
+      })
+    .catch(function (err) {
+      console.log(err)
+    })
+  });
 });
 
 

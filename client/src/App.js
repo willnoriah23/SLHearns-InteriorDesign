@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import Questionaire from "./pages/Questionaire";
 import Portfolio from "./pages/Portfolio";
+import AdminUsers from "./components/AdminUsers"
 
 const App = () =>
 

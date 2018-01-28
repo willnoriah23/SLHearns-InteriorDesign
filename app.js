@@ -12,8 +12,7 @@ require('dotenv').config()
 const index = require('./routes/index');
 const auth = require('./routes/authRoutes');
 const users = require('./routes/userRoutes');
-const upload = require("./routes/upload");
-app.use("/upload", upload);
+
 
 
 // Mongoose Setup

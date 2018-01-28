@@ -7,6 +7,33 @@ const jwt = require('jsonwebtoken');
 var db = require("../models");
 
 
+
+router.get("/admin/user", function(req, res) {
+  db.User.findOne({req.body.fullname})
+    .then(function (user) {
+      res.json({
+        fullname: req.body.fullname,
+        email: req.body.email,
+        room: req.body.room
+      })
+    });
+});
+
+router.get("/admin/users", function(req, res) {
+  db.User.find({}, function (err, users) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json({
+        fullname: req.body.fullname,
+        email: req.body.email,
+        room: req.body.room
+      });
+    }
+  });
+});
+
+
 const admin = new db.User({
   fullname: process.env.ADMIN_NAME,
   email: process.env.ADMIN_EMAIL,
@@ -22,16 +49,43 @@ admin.save(function (err, newAdmin) {
   }
 });
 
-function checkForAdmin(req, res) {
-  const { email, password } = req.body;
+// function checkForAdmin(req, res) {
+//   const { email, password } = req.body;
 
-  db.User.findOne({ email })
-    .then(function (data) {
-      console.log()
-    })
-    .catch(function (err) {
-      console.log(err);
-    })
-}
+//   db.User.findOne({ email })
+//     .then(function (data) {
+//       console.log()
+//     })
+//     .catch(function (err) {
+//       console.log(err);
+//     })
+// }
+
+
+router.post("/questionaire", function (req, res) {
+  db.User.findOne({_id})
+    .then(function ())
+});
+
+const roomSchema = new mongoose.Schema({
+    address: String,
+    phone_number: {
+        type: String,
+        required: true
+    },
+    budget: String,
+    family_size: String,
+    room: {
+        kitchen: {
+            primary_cook: Boolean
+        },
+        bath: {
+            master_bath: Boolean,
+            secondary_bath: Boolean,
+        }
+    },
+    love: String,
+    hate: String
+});
 
 module.exports = router;
