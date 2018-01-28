@@ -49,7 +49,7 @@ class Questionaire extends Component {
         //     .catch(err => console.log(err));
         API.uploadimage(image).end((err, resp) => {
             if(err){
-                alert(err)
+                alert(err);
                 return
             }
 
@@ -62,10 +62,12 @@ class Questionaire extends Component {
         return (
 
             <MuiThemeProvider>
-                <Paper zDepth={3} className="pap">
+
                 <Nav />
                 <Logo />
-
+                <br />
+                <br />
+                <Paper zDepth={2} className="pap">
                 <section className='app'>
                 <TextField
                     hintText="Name"
@@ -161,6 +163,7 @@ class Questionaire extends Component {
 
             </section>
             </Paper>
+                <br/>
             </MuiThemeProvider>
 
         )

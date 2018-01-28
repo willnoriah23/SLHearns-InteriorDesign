@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import Placeholder1 from '../../img/Before_formatted.png';
 import Placeholder2 from '../../img/After_formatted.png';
+import Paper from 'material-ui/Paper';
 import "./ImgDiv.css";
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class ImgDiv extends Component {
 
@@ -16,7 +18,8 @@ class ImgDiv extends Component {
                 img: [Placeholder2],
                 index: 0
             },
-            images:[]
+            images:[],
+            blurb: ""
         };
         // this.images=this.images.bind(this);
         this.changebeforeimg = this.changebeforeimg.bind(this);
@@ -24,6 +27,9 @@ class ImgDiv extends Component {
         // this.componentDidMount = this.componentDidMount.bind(this);
         console.log(props.images);
         props["images"].map((image) => this.state.images.push(image));
+        console.log("this is the blurb from the imgdiv", props.blurb);
+        // this.setState({blurb: props.blurb});
+
 
     }
 
@@ -31,6 +37,9 @@ class ImgDiv extends Component {
         this.setState(this.state);
         this.state.before.img.push(this.state.images[0]);
         this.state.after.img.push(this.state.images[1]);
+
+        this.setState({blurb: this.props.blurb});
+        console.log("this is the state after we set the blurb", this.state.blurb);
         // console.log("State images ",this.state.images[0]);
         //
         //
@@ -66,12 +75,15 @@ class ImgDiv extends Component {
     render () {
         if(this.state.before.img || this.state.after.img) {
             return (
-                <div>
+                <MuiThemeProvider>
+                    <div className={"holder"}>
                     <img src={this.state.before.img[this.state.before.index]} onClick={this.changebeforeimg}
                          alt="Before" className="Services"/>
+                        <p className={"blurbarea"}>{this.state.blurb}</p>
                     <img src={this.state.after.img[this.state.after.index]} onClick={this.changeafterimg} alt="After"
                          className="Services"/>
-                </div>
+                    </div>
+                </MuiThemeProvider>
             )
         }else {
             console.log(this.state);
