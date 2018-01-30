@@ -1,19 +1,21 @@
 import React from 'react';
-import TextField from 'material-ui/TextField';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
 
 
 const KitchenQues = (props) => {
     return (
-    <TextField
-        hintText="Who is the main cook in your household?"
-        name="cook"
-        id="name"
-        floatingLabelText="Head Chef"
-        errorText="Please enter your name."
-        fullWidth={props.fullWidth}
-    >
-    </TextField>
-    );
+        <SelectField
+            floatingLabelText="Are you the main cook? "
+            value={props.value}
+            fullWidth={props.fullWidth}
+            onChange={props.handlechange}
+        >
+            <br />
+            <MenuItem value={1} primaryText="True" />
+            <MenuItem value={2} primaryText="False" />
+        </SelectField>
+    )
 };
 
 export default KitchenQues;

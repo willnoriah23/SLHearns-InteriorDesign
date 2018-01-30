@@ -2,9 +2,37 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const formupload = require("../controller/formController.js");
 
 // Require all models
 var db = require("../models");
+
+
+
+router.get("/admin/user", function(req, res) {
+  db.User.findOne({req.body.fullname})
+    .then(function (user) {
+      res.json({
+        fullname: req.body.fullname,
+        email: req.body.email,
+        room: req.body.room
+      })
+    });
+});
+
+router.get("/admin/users", function(req, res) {
+  db.User.find({}, function (err, users) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json({
+        fullname: req.body.fullname,
+        email: req.body.email,
+        room: req.body.room
+      });
+    }
+  });
+});
 
 
 const admin = new db.User({
@@ -22,16 +50,20 @@ admin.save(function (err, newAdmin) {
   }
 });
 
-function checkForAdmin(req, res) {
-  const { email, password } = req.body;
+// function checkForAdmin(req, res) {
+//   const { email, password } = req.body;
 
-  db.User.findOne({ email })
-    .then(function (data) {
-      console.log()
-    })
-    .catch(function (err) {
-      console.log(err);
-    })
-}
+//   db.User.findOne({ email })
+//     .then(function (data) {
+//       console.log()
+//     })
+//     .catch(function (err) {
+//       console.log(err);
+//     })
+// }
+
+
+router.route("/questionnaire").post(formupload.formupdate);
+
 
 module.exports = router;
