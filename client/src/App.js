@@ -3,8 +3,12 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import Questionaire from "./pages/Questionaire";
 import Portfolio from "./pages/Portfolio";
+<<<<<<< HEAD
+import AdminUsers from "./components/AdminUsers"
+=======
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
+>>>>>>> 44d4a50f00b3d7a83bb9b3b7ee2744a46e468091
 
 const App = () =>
 
