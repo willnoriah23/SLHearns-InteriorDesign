@@ -6,7 +6,8 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
-require('dotenv').config()
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/SLHearnsDB";
+require('dotenv').config();
 
 
 const index = require('./routes/index');
@@ -17,7 +18,9 @@ const users = require('./routes/userRoutes');
 
 // Mongoose Setup
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.DB_NAME);
+mongoose.connect(MONGODB_URI, {
+    useMongoClient: true
+});
 
 const db = mongoose.connection;
 db.once('open', () => console.log('Mongoose connection successfully started'));

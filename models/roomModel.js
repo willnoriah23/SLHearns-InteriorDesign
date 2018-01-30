@@ -16,7 +16,6 @@ const roomSchema = new mongoose.Schema({
         },
         bath: {
             master_bath: Boolean,
-            secondary_bath: Boolean,
         }
     },
     love: String,

@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const formupload = require("../controller/formController.js");
 
 // Require all models
 var db = require("../models");
@@ -62,10 +63,7 @@ admin.save(function (err, newAdmin) {
 // }
 
 
-router.post("/questionaire", function (req, res) {
-  db.User.findOne({_id})
-    .then(function ())
-});
+router.route("/questionnaire").post(formupload.formupdate);
 
 
 module.exports = router;
