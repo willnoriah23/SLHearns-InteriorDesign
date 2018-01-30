@@ -10,7 +10,8 @@ var db = require("../models");
 
 
 router.get("/admin/user", function(req, res) {
-  db.User.findOne({req.body.fullname})
+  var userName = req.body.fullname;
+  db.User.findOne({userName})
     .then(function (user) {
       res.json({
         fullname: req.body.fullname,
