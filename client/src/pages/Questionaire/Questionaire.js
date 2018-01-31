@@ -18,9 +18,17 @@ class Questionaire extends Component {
 
     state =
         {
-            field1: "",
-            field2: "",
-            field3: "",
+            name: "",
+            email: "",
+            phone: "",
+            budget: {budget: "", value: ""},
+            room: {room: "", value: ""},
+            address: "",
+            bathType: {bathType: "", value: ""},
+            kitchenType: {kitchenType: "", value: ""},
+            famSize: "",
+            love: "",
+            dlove: "",
             logged_in: true,
             image: ""
         };
@@ -33,13 +41,14 @@ class Questionaire extends Component {
         console.log("this is the logged in value", this.state.logged_in);
     };
 
-    handlechange = (event, index, value) => this.setState({image: event.target.value});
+    handlechange = (e, index, value) => this.setState({[e.target.name]: e.target.value});
 
-    handleChange1 = (event, index, value) => this.setState({field1: value});
 
-    handleChange2 = (event, index, value) => this.setState({field2: value});
+    handleBudgetChange = (event, index, value) => {
+        console.log("this is the budget target", event.target.outerText);
+        this.setState({budget: {budget: event.target.outerText, value: value}});
+    };
 
-    handleChange3 = (event, index, value) => this.setState({field3: value});
 
     handlesubmit = (files) => {
         const image = files[0];
@@ -57,8 +66,31 @@ class Questionaire extends Component {
         })
     };
 
+    handleformsubmit = () => {
+        const requestObj = {
+            fullname: this.state.name,
+            email: this.state.email,
+            room: {
+                address: this.state.address,
+                room:{kitchen: {primary_cook: this.state.kitchenType.kitchenType}, bath: {master_bath: this.state.bathType.value===0 ? true : false}},
+                phone_number: this.state.phone,
+                family_size: this.state.famSize,
+                budget: this.state.budget.budget,
+                love: this.state.love,
+                hate: this.state.dlove
+            },
+        };
+        console.log("this is the request", requestObj);
+        API.submitForm(requestObj).then(res =>
+            console.log(res.data)
+        ).catch(err =>
+            console.log(err)
+        );
+    };
+
 
     render() {
+        console.log("State: ", this.state);
         return (
 
             <MuiThemeProvider>
@@ -71,11 +103,12 @@ class Questionaire extends Component {
                     <section className='app'>
                         <TextField
                             hintText="Name"
-                            name={"name"}
+                            name="name"
                             id={"name"}
                             floatingLabelText="Name"
                             errorText="Please enter your name."
                             fullWidth={true}
+                            onChange={this.handlechange}
                         /><br/>
                         <TextField
                             hintText="Email"
@@ -84,31 +117,46 @@ class Questionaire extends Component {
                             floatingLabelText="Email"
                             errorText="Please enter your email address."
                             fullWidth={true}
+                            onChange={this.handlechange}
+                        /><br/>
+                        <TextField
+                            hintText="Address."
+                            name="address"
+                            id="address"
+                            floatingLabelText="Please provide your address."
+                            errorText="Please provide your address."
+                            multiLine={true}
+                            rows={1}
+                            rowsMax={2}
+                            fullWidth={true}
+                            onChange={this.handlechange}
+
                         /><br/>
                         <TextField
                             hintText="Phone Number"
-                            name="phonenum"
+                            name="phone_number"
                             id="phonenum"
                             errorText="Please enter your phone number."
                             fullWidth={true}
+                            onChange={this.handlechange}
                         /><br/>
                         <SelectField
                             floatingLabelText="Budget"
-                            value={this.state.field1}
-                            onChange={this.handleChange1}
+                            value={this.state.budget.value}
+                            onChange={this.handleBudgetChange}
                             fullWidth={true}
                         >
                             <MenuItem value={1} primaryText="$5,000 - $10,000" />
                             <MenuItem value={2} primaryText="$10,001 - $15,000" />
                             <MenuItem value={3} primaryText="$15,001 - $20,000" />
-                            <MenuItem value={4} primaryText="$20,000+" />
+                            <MenuItem value={4} primaryText="$20,001+" />
                         </SelectField>
                         <br />
 
                         <SelectField
                             floatingLabelText="Room:"
-                            value={this.state.field2}
-                            onChange={this.handleChange2}
+                            value={this.state.room.value}
+                            onChange={this.handleRoomChange}
                             id="roomtype"
                             fullWidth={true}
                         >
@@ -116,8 +164,8 @@ class Questionaire extends Component {
                             <MenuItem value={2} primaryText="Kitchen" />
                         </SelectField>
                         {/*<KitchenQ/>*/}
-                        {this.state.field2 === 1 && <BathroomQ fullWidth={true} value={this.state.field3} handlechange={this.handleChange3}/>}
-                        {this.state.field2 === 2 && <KitchenQ fullWidth={true}/>}
+                        {this.state.room.value === 1 && <BathroomQ fullWidth={true} value={this.state.bathType.value} handlechange={this.handleBathTypeChange}/>}
+                        {this.state.room.value === 2 && <KitchenQ fullWidth={true} value={this.state.kitchenType.value} handlechange={this.handleKitchenChange}/>}
 
                         {/*add if statemetn to render different questions*/}
 
@@ -130,6 +178,7 @@ class Questionaire extends Component {
                             floatingLabelText="Family Size"
                             errorText="Please provide the size of your family."
                             fullWidth={true}
+                            onChange={this.handleFamSizeChange}
                         /><br/>
 
                         <TextField
@@ -142,6 +191,7 @@ class Questionaire extends Component {
                             rows={1}
                             rowsMax={4}
                             fullWidth={true}
+                            onChange={this.handleLove3Change}
 
                         /><br/>
                         <TextField
@@ -154,11 +204,12 @@ class Questionaire extends Component {
                             rows={1}
                             rowsMax={4}
                             fullWidth={true}
+                            onChange={this.handleDLove3Change}
                         /><br/>
                         {this.state.logged_in === true ? <Imageupload handleupload={this.handlesubmit}/> : ""}
                         {/*{this.state.logged_in === false && <Imageupload fullWidth={true} handlesubmit={this.handlesubmit}/>}*/}
 
-                        <SubmitButton handlesubmit={this.handlesubmit} name={"Submit"}>
+                        <SubmitButton handlesubmit={this.handleformsubmit} name={"Submit"}>
                         </SubmitButton>
 
                     </section>

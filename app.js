@@ -33,10 +33,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/', auth);
-// app.use('/users', users);
+app.use('/', users);
 
 app.listen(3001, function(){
   console.log("App is listening on port: ", 3001);
 });
 
-module.exports = app;

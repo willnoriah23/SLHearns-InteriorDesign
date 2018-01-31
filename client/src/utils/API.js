@@ -40,5 +40,9 @@ export default {
         //     },
         //     data: formData
         // });
+    },
+
+    submitForm: function(query) {
+        return axios.post("/questionnaire", query);
     }
 };
