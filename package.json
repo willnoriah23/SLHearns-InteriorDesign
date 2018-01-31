@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "postinstall": "(cd client && npm install && npm build)",
+    "postinstall": "(cd client && yarn install && yarn build)",
     "dev": "concurrently \"nodemon server.js\" \" cd ./client && npm start\"",
     "start": "node server.js"
   },
