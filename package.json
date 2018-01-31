@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "postinstall": "(cd client && npm install && npm build)",
+    "postinstall": "(cd client && yarn && yarn run build)",
     "dev": "concurrently \"nodemon server.js\" \" cd ./client && npm start\"",
     "start": "node server.js"
   },
@@ -30,7 +30,6 @@
     "serve-favicon": "~2.4.5"
   },
   "devDependencies": {
-    "concurrently": "^3.5.1",
-    "dotenv": "^4.0.0"
+    "concurrently": "^3.5.1"
   }
 }
