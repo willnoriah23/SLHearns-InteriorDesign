@@ -49,7 +49,7 @@ class Portfolio extends React.Component {
             <Logo />
                 <br />
                 <br />
-                <div>
+                <div className="folioDiv">
                     <img src={Images.Davis[this.state.DavisIndex]} onClick={() => this.changePhoto("DavisIndex", this.state.maxDavis)} alt="Davis Gallery" className="folioPictures"/>
 
                     <img src={Images.Oneil[this.state.OneilIndex]} onClick={() => this.changePhoto("OneilIndex", this.state.maxOneil)} alt="Oneil Gallery" className="folioPictures"/>
