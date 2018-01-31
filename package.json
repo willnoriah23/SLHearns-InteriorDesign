@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "postinstall": "(cd client && yarn && yarn run build)",
+    "postinstall": "(cd client && npm install && npm build)",
     "dev": "concurrently \"nodemon server.js\" \" cd ./client && npm start\"",
     "start": "node server.js"
   },
@@ -27,7 +27,8 @@
     "react-dom": "^16.2.0",
     "react-image-gallery": "^0.8.7",
     "reactstrap": "^5.0.0-alpha.4",
-    "serve-favicon": "~2.4.5"
+    "serve-favicon": "~2.4.5",
+    "dotenv": "^4.0.0"
   },
   "devDependencies": {
     "concurrently": "^3.5.1"
