@@ -95,7 +95,7 @@ class Homepage extends Component {
 
                     <div className="imageGallery">
                         <ImageGallery
-                            autoPlay={false}
+                            autoPlay={true}
                             disableArrowKeys={true}
                             ref={i => this._imageGallery = i}
                             items={this.images}
