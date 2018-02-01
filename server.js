@@ -10,7 +10,7 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/SLHearnsDB";
 require('dotenv').config();
 
 
-const index = require('./routes/index');
+// const index = require('./routes/index');
 const auth = require('./routes/authRoutes');
 const users = require('./routes/userRoutes');
 
@@ -34,8 +34,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-app.use('/', auth);
+app.use('/', users);
+app.use('/auth', auth);
 // app.use('/users', users);
 
 app.listen(3001, function(){

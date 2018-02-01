@@ -10,7 +10,7 @@ var db = require("../models");
 
 
 router.get("/admin/user", function(req, res) {
-  db.User.findOne({req.body.fullname})
+  db.User.findOne({name: req.body.fullname})
     .then(function (user) {
       res.json({
         fullname: req.body.fullname,
@@ -64,6 +64,7 @@ admin.save(function (err, newAdmin) {
 
 
 router.route("/questionnaire").post(formupload.formupdate);
+// router.route("/questionnaire").get((req, res) => {res.send("Hello")});
 
 
 module.exports = router;
