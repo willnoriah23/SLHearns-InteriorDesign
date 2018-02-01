@@ -116,7 +116,9 @@ class Questionaire extends Component {
                 <Logo />
                 <br />
                 <br />
+
                 <Paper zDepth={2} className="pap">
+
                     <section className='app'>
                         <TextField
                             hintText="Name"

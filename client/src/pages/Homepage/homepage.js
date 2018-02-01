@@ -11,7 +11,7 @@ import Logo from "../../components/Logo";
 
 const PREFIX_URL = 'http://res.cloudinary.com/noriahjwill/image/upload/';
 
-class Homepage extends Component {
+class Home extends Component {
 
     constructor() {
         super();
@@ -128,4 +128,4 @@ class Homepage extends Component {
     }
 }
 
-export default Homepage;
+export default Home;
