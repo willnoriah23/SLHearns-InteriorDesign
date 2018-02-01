@@ -25,11 +25,11 @@ class Questionaire extends Component {
             room: {room: "", value: ""},
             address: "",
             bathType: {bathType: "", value: ""},
-            kitchenType: {kitchenType: "", value: ""},
+            kitchenType: {kitchenType: false, value: ""},
             famSize: "",
             love: "",
             dlove: "",
-            logged_in: true,
+            logged_in: "",
             image: ""
         };
 
@@ -38,10 +38,23 @@ class Questionaire extends Component {
         //     this.setState({obj:{logged_in: true}})
         //   }
         //   this.setState({logged_in: true});
-        console.log("this is the logged in value", this.state.logged_in);
+        if(document.location.pathname.substring(0,4) === "/auth") {
+            this.setState({logged_in: true});
+            console.log("this is the logged in value", this.state.logged_in);
+        }else {
+            this.setState({logged_in: false});
+            console.log("this is the logged in value", this.state.logged_in);
+        }
+
+
     };
 
-    handleNameChange = (e, index, value) => {this.setState({name: e.target.value});};
+    handleNameChange = (e, index, value) => {
+        this.setState({
+            name: e.target.value
+        });
+
+    };
 
     handleEmailChange = (e, index, value) => {this.setState({email: e.target.value});};
 
@@ -51,6 +64,7 @@ class Questionaire extends Component {
 
     handleBudgetChange = (event, index, value) => {
         console.log("this is the budget target", event.target.outerText);
+        console.log("this is the document", document.location);
         this.setState({budget: {budget: event.target.outerText, value: value}});
     };
 
@@ -90,10 +104,10 @@ class Questionaire extends Component {
             email: this.state.email,
             room: {
                 address: this.state.address,
-                room:{kitchen: {primary_cook: this.state.kitchenType.kitchenType}, bath: {master_bath: this.state.bathType.value===0 ? true : false}},
                 phone_number: this.state.phone,
-                family_size: this.state.famSize,
                 budget: this.state.budget.budget,
+                family_size: this.state.famSize,
+                room:{kitchen: {primary_cook: this.state.kitchenType.kitchenType}, bath: {master_bath: this.state.bathType.value===0 ? true : false}},
                 love: this.state.love,
                 hate: this.state.dlove
             },
@@ -104,8 +118,12 @@ class Questionaire extends Component {
         ).catch(err =>
             console.log(err)
         );
+        document.location.href="/";
     };
 
+    handlelogin = () => {
+        document.location.href="/login";
+    };
 
     render() {
         return (
@@ -115,6 +133,13 @@ class Questionaire extends Component {
                 <Nav />
                 <Logo />
                 <br />
+                <Paper>
+                    <section>
+                        Please complete the questionnaire below with all the necessary information about your project.\n To upload accompanying photos, please register.
+
+
+                    </section>
+                </Paper>
                 <br />
 
                 <Paper zDepth={2} className="pap">
@@ -228,8 +253,8 @@ class Questionaire extends Component {
                         {this.state.logged_in === true ? <Imageupload handleupload={this.handlesubmit}/> : ""}
                         {/*{this.state.logged_in === false && <Imageupload fullWidth={true} handlesubmit={this.handlesubmit}/>}*/}
 
-                        <SubmitButton handlesubmit={this.handleformsubmit} name={"Submit"}>
-                        </SubmitButton>
+                        <SubmitButton handlesubmit={this.handleformsubmit} name={"Submit Form"}/>
+                        <SubmitButton handlesubmit={this.handlelogin}  name={"Login/Register"}/>
 
                     </section>
                 </Paper>

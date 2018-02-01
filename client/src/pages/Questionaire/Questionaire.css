@@ -35,14 +35,15 @@ h2 {
     left: 20px;
     margin-right: -10px;
     width: 95%;
-    height: 200px;
+    height: 220px;
     padding-top: 15px;
 }
 
 .pap {
     margin-left: 200px;
     margin-right: 200px;
-    margin-bottom: -5px;
+    height: 220px;
+    /*margin-bottom: -5px;*/
 }
 
 /*.header {

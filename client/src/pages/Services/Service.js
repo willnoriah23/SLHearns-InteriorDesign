@@ -18,7 +18,7 @@ class Services extends React.Component {
 
 
     render () {
-        const newArray = ServImg.map((area) => {return(<div><ImgDiv images={area.kitchen} blurb={Blurb[ServImg.indexOf(area)]}/><br/><ImgDiv images={area.bath} blurb={Blurb[ServImg.indexOf(area)]}/></div>)});
+        const newArray = ServImg.map((area) => {return(<div><ImgDiv images={area.kitchen} blurb={Blurb[ServImg.indexOf(area)]}/><br/><ImgDiv images={area.bath} /></div>)});
 
             // Object.keys(ServImg).forEach((key) => {
             // console.log(ServImg[key]);

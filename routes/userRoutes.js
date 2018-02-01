@@ -65,6 +65,7 @@ admin.save(function (err, newAdmin) {
 
 
 router.route("/questionnaire").post(formupload.formupdate);
+// router.route("/questionnaire").get((req, res) => {res.send("Hello")});
 
 
 module.exports = router;

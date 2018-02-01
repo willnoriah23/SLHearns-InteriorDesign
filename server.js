@@ -10,7 +10,7 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/SLHearnsDB";
 require('dotenv').config();
 
 
-const index = require('./routes/index');
+// const index = require('./routes/index');
 const auth = require('./routes/authRoutes');
 const users = require('./routes/userRoutes');
 
