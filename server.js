@@ -35,7 +35,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 
-app.use('/api/', index);
+// app.use('/api/', index);
 app.use('/api/', users);
 app.get('*', (res, req) => {
 	res.sendFile(path.join(__dirname+'/client/build/index.html'));
