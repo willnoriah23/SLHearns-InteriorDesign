@@ -21,9 +21,10 @@ class Login extends React.Component {
     // Keep the page from refreshing
     event.preventDefault();
 
-    axios.post('/login', this.state)
+    axios.post('/register', this.state)
       .then((data) => {
-        this.props.history.push("/users")
+        console.log(data);
+        this.props.history.push("/login")
       })
       .catch((err) => {
         console.log("Error", err.response);
@@ -33,8 +34,14 @@ class Login extends React.Component {
   render() {
     return (
       <div>
-        <h1>Login Page</h1>
+        <h1>Registration Page</h1>
         <form>
+          <input
+          type="text"
+          name="fullname"
+          onChange={this.getValue} />
+          <br />
+
           <input
           type="email"
           name="email"
@@ -47,7 +54,7 @@ class Login extends React.Component {
           onChange={this.getValue} />
           <br />
 
-          <Link to="/login"><button onClick={this.sendData}>Login</button></Link>
+          <Link to="/register"><button onClick={this.sendData}>Login</button></Link>
         </form>
       </div>
     )

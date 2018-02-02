@@ -1,12 +1,18 @@
 import React from 'react';
 import axios from 'axios';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {Link} from 'react-router-dom';
+import RegisterButton from "../../components/Button";
 
 class Login extends React.Component {
   constructor () {
     super();
     this.state = {}
   }
+
+  handleRegister = () => {
+    document.location.href="/register";
+};
 
   getValue = (event) => {
     // Updates the input state
@@ -15,33 +21,26 @@ class Login extends React.Component {
         [event.target.name]: event.target.value
       }
     );
-  }
+  };
 
   sendData = (event) => {
     // Keep the page from refreshing
     event.preventDefault();
 
-    axios.post('/register', this.state)
+    axios.post('/login', this.state)
       .then((data) => {
-        console.log(data);
-        this.props.history.push("/login")
+        this.props.history.push("/users")
       })
       .catch((err) => {
         console.log("Error", err.response);
       })
-  }
+  };
 
   render() {
     return (
-      <div>
-        <h1>Registration Page</h1>
+      <MuiThemeProvider>
+        <h1>Login Page</h1>
         <form>
-          <input
-          type="text"
-          name="fullname"
-          onChange={this.getValue} />
-          <br />
-
           <input
           type="email"
           name="email"
@@ -54,9 +53,10 @@ class Login extends React.Component {
           onChange={this.getValue} />
           <br />
 
-          <Link to="/register"><button onClick={this.sendData}>Login</button></Link>
+          <Link to="/login"><button onClick={this.sendData}>Login</button></Link>
+          <RegisterButton name={"Register"} handlesubmit={this.handleRegister} />
         </form>
-      </div>
+      </MuiThemeProvider>
     )
   }
 }

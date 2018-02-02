@@ -6,12 +6,12 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import KitchenQ from '../../components/Questions/KitchenQues';
 import BathroomQ from '../../components/Questions/BathroomQ';
 import SubmitButton from "../../components/Button/Submitbutton";
-import Nav from "../../components/Nav/Navbar";
 import "./Questionaire.css";
-import Logo from "../../components/Logo";
 import Imageupload from "../../components/Imageupload";
 import Paper from 'material-ui/Paper';
 import API from "../../utils/API.js";
+import Header from "../../components/Header";
+
 
 
 class Questionaire extends Component {
@@ -33,12 +33,13 @@ class Questionaire extends Component {
             image: ""
         };
 
+
     componentDidMount() {
         // if (coookie is logged in) {
         //     this.setState({obj:{logged_in: true}})
         //   }
         //   this.setState({logged_in: true});
-        if(document.location.pathname.substring(0,4) === "/auth") {
+        if(this.getCookie("name") != null) {
             this.setState({logged_in: true});
             console.log("this is the logged in value", this.state.logged_in);
         }else {
@@ -47,6 +48,22 @@ class Questionaire extends Component {
         }
 
 
+    };
+
+    getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) === ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) === 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
     };
 
     handleNameChange = (e, index, value) => {
@@ -118,7 +135,7 @@ class Questionaire extends Component {
         ).catch(err =>
             console.log(err)
         );
-        document.location.href="/";
+        // document.location.href="/";
     };
 
     handlelogin = () => {
@@ -129,9 +146,7 @@ class Questionaire extends Component {
         return (
 
             <MuiThemeProvider>
-
-                <Nav />
-                <Logo />
+                <Header/>
                 <br />
                 <Paper>
                     <section>

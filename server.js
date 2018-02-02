@@ -35,7 +35,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', users);
-app.use('/auth', auth);
+// app.use('/', auth);
 // app.use('/users', users);
 
 app.listen(3001, function(){

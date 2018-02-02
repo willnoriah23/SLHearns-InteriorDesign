@@ -31,13 +31,14 @@ const verifyCookie = (req, res, next) => {
 
 router.post('/register', (req, res) => {
   const { fullname, email, password } = req.body;
-
+    console.log("this is the request", req.body);
   const salt = bcrypt.genSaltSync(12);
   const hash = bcrypt.hashSync(password, salt);
 
-  User.findOne({fullname})
+  User.findOne({fullname: req.body.fullname})
     .then(function(user) {
-      if (user) {
+        console.log("this is the user", user);
+      if (user.statusText === "Not Found") {
         res.json({status: "User already exists."});
       } else {
         // Creates a single user.
