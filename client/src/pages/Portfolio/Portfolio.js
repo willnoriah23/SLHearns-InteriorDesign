@@ -49,7 +49,8 @@ class Portfolio extends React.Component {
             <Logo />
                 <br />
                 <br />
-                <div>
+                <div className="folioDiv">
+
                     <img src={Images.Davis[this.state.DavisIndex]} onClick={() => this.changePhoto("DavisIndex", this.state.maxDavis)} alt="Davis Gallery" className="folioPictures"/>
 
                     <img src={Images.Oneil[this.state.OneilIndex]} onClick={() => this.changePhoto("OneilIndex", this.state.maxOneil)} alt="Oneil Gallery" className="folioPictures"/>
@@ -73,4 +74,5 @@ class Portfolio extends React.Component {
     }
 }
 
+// <h1> Kitchen & Bath Design Extraordinare </h1>
 export default Portfolio;

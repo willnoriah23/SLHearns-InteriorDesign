@@ -11,7 +11,7 @@ require('dotenv').config();
 
 
 // const index = require('./routes/index');
-const auth = require('./routes/authRoutes');
+// const auth = require('./routes/authRoutes');
 const users = require('./routes/userRoutes');
 
 
@@ -32,13 +32,17 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
-app.use('/', users);
-// app.use('/', auth);
+
+app.use('/api/', index);
+app.use('/api/', users);
+app.get('*', (res, req) => {
+	res.sendFile(path.join(__dirname+'/client/build/index.html'));
+});
 // app.use('/users', users);
 
-app.listen(3001, function(){
+app.listen(process.env.PORT || 3001, function(){
   console.log("App is listening on port: ", 3001);
 });
 

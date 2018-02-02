@@ -11,7 +11,7 @@ import Logo from "../../components/Logo";
 
 const PREFIX_URL = 'http://res.cloudinary.com/noriahjwill/image/upload/';
 
-class Homepage extends Component {
+class Home extends Component {
 
     constructor() {
         super();
@@ -91,7 +91,7 @@ class Homepage extends Component {
             <MuiThemeProvider>
                 <Nav />
                 <Logo />
-                {/*<section className='app'>*/}
+                <section className='app'>
 
                     <div className="imageGallery">
                         <ImageGallery
@@ -121,10 +121,11 @@ class Homepage extends Component {
                         />
                     </div>
 
-                {/*</section>*/}
+                </section>
+             
             </MuiThemeProvider>
         );
     }
 }
 
-export default Homepage;
+export default Home;

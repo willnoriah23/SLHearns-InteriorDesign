@@ -107,7 +107,8 @@ router.get("/logout", (req, res) => {
 
 
 router.get("/admin/user", function(req, res) {
-  db.User.findOne({name: req.body.fullname})
+  var userName = req.body.fullname;
+  db.User.findOne({userName})
     .then(function (user) {
       res.json({
         fullname: req.body.fullname,

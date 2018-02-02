@@ -83,8 +83,8 @@ router.post("/login", (req, res) => {
 
 router.get('/users', verifyCookie, (req, res) => {
     res.json({status:"Member signed in successfully!"});
-
-    db.User.findOne({name: req.body.fullname})
+    var userName = req.body.fullname;
+    db.User.findOne({userName})
     .then(function (user) {
       res.json({
         fullname: req.body.fullname,

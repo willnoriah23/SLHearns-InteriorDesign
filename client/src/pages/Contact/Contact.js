@@ -8,15 +8,17 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import "./Contact.css";
 
 
-// const style = {
-//     marginLeft: 20,
-// };
+const style = {
+    backgroundColor: "#E0E0E0"
+}
 
 const Contact = () => (
     <MuiThemeProvider>
     <Nav />
     <Logo />
-    <Paper zDepth={2} className="pap">
+    <Paper style={style} zDepth={2} className="pap" >
+
+
 
         <div className="contactMe">
             <br/>
@@ -34,7 +36,9 @@ const Contact = () => (
 
                 She loves the opportunity to meet wonderful people, and help them bring their home
                 and lifestyle visions to fruition. Be forewarned: three years in Toastmasters,
-                and she’ll talk you into some beautiful ideas. You won’t know what hit you.</p>
+                and she’ll talk you into some beautiful ideas. 
+                <br />
+                You won’t know what hit you.</p>
 
             <br />
 

@@ -87,7 +87,7 @@ class ImageGallery extends React.Component {
     static defaultProps = {
         items: [],
         showNav: true,
-        autoPlay: false,
+        autoPlay: true,
         lazyLoad: false,
         infinite: true,
         showIndex: false,
