@@ -21,7 +21,7 @@ class Login extends React.Component {
     // Keep the page from refreshing
     event.preventDefault();
 
-    axios.post('/register', this.state)
+    axios.post('/api/register', this.state)
       .then((data) => {
         console.log(data);
         this.props.history.push("/login")

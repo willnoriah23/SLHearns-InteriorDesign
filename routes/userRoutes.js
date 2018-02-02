@@ -37,14 +37,14 @@ router.post('/register', (req, res) => {
     const salt = bcrypt.genSaltSync(12);
     const hash = bcrypt.hashSync(password, salt);
 
-    User.findOne({fullname: req.body.fullname})
+    db.User.findOne({fullname: req.body.fullname})
         .then(function(user) {
             console.log("this is the user", user);
-            if (user.statusText === "Not Found") {
+            if (user) {
                 res.json({status: "User already exists."});
             } else {
                 // Creates a single user.
-                User.create({
+                db.User.create({
                     fullname: fullname,
                     email: email,
                     password: hash
@@ -52,7 +52,7 @@ router.post('/register', (req, res) => {
                     if (err) {
                         console.log("Something went wrong");
                     } else {
-                        res.status(200).json({status: "New user created!"})
+                        res.status(200).json({status: "New user created!"});
                         console.log(user);
                     }
                 });
@@ -67,7 +67,7 @@ router.post("/login", (req, res) => {
     const salt = bcrypt.genSaltSync(12);
     const hash = bcrypt.hashSync(password, salt);
 
-    User.findOne({email})
+    db.User.findOne({email: email})
         .then((user) => {
             if (bcrypt.compareSync(password, user.password)) {
                 const token = generateToken(user._id, user.username);
