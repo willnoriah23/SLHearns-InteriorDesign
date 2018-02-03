@@ -41,7 +41,7 @@ class Questionaire extends Component {
         //     this.setState({obj:{logged_in: true}})
         //   }
         //   this.setState({logged_in: true});
-        if(this.getCookie("name") != null) {
+        if(localStorage.loggedin) {
             this.setState({logged_in: true});
             console.log("this is the logged in value", this.state.logged_in);
         }else {
@@ -132,8 +132,11 @@ class Questionaire extends Component {
             },
         };
         console.log("this is the request", requestObj);
-        API.submitForm(requestObj).then(res =>
-            console.log(res.data)
+        API.submitForm(requestObj).then(res => {
+            console.log(res.data);
+            API.userformupd({email: localStorage.email, id: res.data._id})
+                .then(res => console.log(res.data))
+                .catch(err => console.log(err))}
         ).catch(err =>
             console.log(err)
         );
