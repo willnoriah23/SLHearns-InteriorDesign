@@ -44,5 +44,11 @@ export default {
 
     submitForm: function(query) {
         return axios.post("/questionnaire", query);
+    },
+
+    addformtoUser: function(query) {
+        return axios.post("/userform", query)
     }
+
+
 };

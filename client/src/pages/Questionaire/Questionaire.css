@@ -18,6 +18,10 @@ h2 {
     margin-left: 100px;
 }
 
+.header {
+    display: inline-block;
+}
+
 .image-gallery-image > img {
     height: inherit;
     width: 70%;

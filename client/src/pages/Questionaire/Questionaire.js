@@ -6,22 +6,14 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import KitchenQ from '../../components/Questions/KitchenQues';
 import BathroomQ from '../../components/Questions/BathroomQ';
 import SubmitButton from "../../components/Button/Submitbutton";
-import Nav from "../../components/Nav/Navbar";
 import "./Questionaire.css";
-import Logo from "../../components/Logo";
 import Imageupload from "../../components/Imageupload";
 import Paper from 'material-ui/Paper';
 import API from "../../utils/API.js";
-import {grey500} from 'material-ui/styles/colors';
+import Nav from "../../components/Nav";
+import Logo from "../../components/Logo";
 
-const styles = {
-  floatingLabelFocusStyle: {
-    color: grey500
-  },
-   underlineStyle: {
-    borderColor: grey500
-  },
-};  
+
 
 class Questionaire extends Component {
 
@@ -42,12 +34,13 @@ class Questionaire extends Component {
             image: ""
         };
 
+
     componentDidMount() {
         // if (coookie is logged in) {
         //     this.setState({obj:{logged_in: true}})
         //   }
         //   this.setState({logged_in: true});
-        if(document.location.pathname.substring(0,4) === "/auth") {
+        if(localStorage.loggedin) {
             this.setState({logged_in: true});
             console.log("this is the logged in value", this.state.logged_in);
         }else {
@@ -56,6 +49,22 @@ class Questionaire extends Component {
         }
 
 
+    };
+
+    getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) === ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) === 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
     };
 
     handleNameChange = (e, index, value) => {
@@ -122,12 +131,15 @@ class Questionaire extends Component {
             },
         };
         console.log("this is the request", requestObj);
-        API.submitForm(requestObj).then(res =>
-            console.log(res.data)
+        API.submitForm(requestObj).then(res => {
+            console.log(res.data);
+            API.userformupd({email: localStorage.email, id: res.data._id})
+                .then(res => console.log(res.data))
+                .catch(err => console.log(err))}
         ).catch(err =>
             console.log(err)
         );
-        document.location.href="/questions";
+        // document.location.href="/";
     };
 
     handlelogin = () => {
@@ -138,14 +150,17 @@ class Questionaire extends Component {
         return (
 
             <MuiThemeProvider>
-
                 <Nav />
                 <Logo />
                 <br />
-                <div className="quest"> Interested in a consulation? Please complete the questionnaire below with all the necessary information about your project. 
+                <Paper>
+                    <section>
+                        Please complete the questionnaire below with all the necessary information about your project.\n To upload accompanying photos, please register.
+
+
+                    </section>
+                </Paper>
                 <br />
-                To upload accompanying photos, please register.</div>
-        
 
                 <Paper zDepth={2} className="pap">
 
@@ -155,10 +170,7 @@ class Questionaire extends Component {
                             name={"name"}
                             id={"name"}
                             floatingLabelText="Name"
-                            floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-                            underlineStyle={styles.underlineStyle}
-                            underlineFocusStyle={styles.underlineStyle}
-                            // errorText="Please enter your name."
+                            errorText="Please enter your name."
                             fullWidth={true}
                             onChange={this.handleNameChange}
                         /><br/>
@@ -167,22 +179,16 @@ class Questionaire extends Component {
                             name="email"
                             id="email"
                             floatingLabelText="Email"
-                            floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-                            underlineStyle={styles.underlineStyle}
-                            underlineFocusStyle={styles.underlineStyle}
-                            // errorText="Please enter your email address."
+                            errorText="Please enter your email address."
                             fullWidth={true}
                             onChange={this.handleEmailChange}
                         /><br/>
                         <TextField
-                            hintText="Address"
+                            hintText="Address."
                             name="address"
                             id="address"
-                            floatingLabelText="Address"
-                            floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-                            underlineStyle={styles.underlineStyle}
-                            underlineFocusStyle={styles.underlineStyle}
-                            // errorText="Please provide your address."
+                            floatingLabelText="Please provide your address."
+                            errorText="Please provide your address."
                             multiLine={true}
                             rows={1}
                             rowsMax={2}
@@ -194,11 +200,7 @@ class Questionaire extends Component {
                             hintText="Phone Number"
                             name="phonenum"
                             id="phonenum"
-                            floatingLabelText="Phone Number"
-                            floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-                            underlineStyle={styles.underlineStyle}
-                            underlineFocusStyle={styles.underlineStyle}
-                            // errorText="Please enter your phone number."
+                            errorText="Please enter your phone number."
                             fullWidth={true}
                             onChange={this.handlePhoneChange}
                         /><br/>
@@ -217,9 +219,6 @@ class Questionaire extends Component {
 
                         <SelectField
                             floatingLabelText="Room:"
-                            floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-                            underlineStyle={styles.underlineStyle}
-                            underlineFocusStyle={styles.underlineStyle}
                             value={this.state.room.value}
                             onChange={this.handleRoomChange}
                             id="roomtype"
@@ -237,27 +236,21 @@ class Questionaire extends Component {
                         <br />
 
                         <TextField
-                            hintText="How many members live in your household?"
+                            hintText="Family Size"
                             name="famsize"
                             id="famsize"
                             floatingLabelText="Family Size"
-                            floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-                            underlineStyle={styles.underlineStyle}
-                            underlineFocusStyle={styles.underlineStyle}
-                            // errorText="Please provide the size of your family."
+                            errorText="Please provide the size of your family."
                             fullWidth={true}
                             onChange={this.handleFamSizeChange}
                         /><br/>
 
                         <TextField
-                            hintText="Please list three things you love about the current design of your space."
+                            hintText="Please provide three(3) things you love about the current design."
                             name="love3"
                             id="love3"
-                            floatingLabelText="Things you love"
-                            floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-                            underlineStyle={styles.underlineStyle}
-                            underlineFocusStyle={styles.underlineStyle}
-                            // errorText="Please provide at least one thing you currently love."
+                            floatingLabelText="Three things you love."
+                            errorText="Please provide at least one thing you currently love."
                             multiLine={true}
                             rows={1}
                             rowsMax={4}
@@ -266,14 +259,11 @@ class Questionaire extends Component {
 
                         /><br/>
                         <TextField
-                            hintText="Please list three things you do not love about the current design of your space."
+                            hintText="Please provide three(3) things you do not love about the current design."
                             name="dontlove3"
                             id="dontlove3"
-                            floatingLabelText="Things you do not love"
-                            floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-                            underlineStyle={styles.underlineStyle}
-                            underlineFocusStyle={styles.underlineStyle}
-                            // errorText="Please provide at least one thing you currently do not love."
+                            floatingLabelText="Three things you do not love."
+                            errorText="Please provide at least one thing you currently do not love."
                             multiLine={true}
                             rows={1}
                             rowsMax={4}
@@ -282,10 +272,9 @@ class Questionaire extends Component {
                         /><br/>
                         {this.state.logged_in === true ? <Imageupload handleupload={this.handlesubmit}/> : ""}
                         {/*{this.state.logged_in === false && <Imageupload fullWidth={true} handlesubmit={this.handlesubmit}/>}*/}
-                        <br />
-                        <br />  
+
                         <SubmitButton handlesubmit={this.handleformsubmit} name={"Submit Form"}/>
-                        <SubmitButton handlesubmit={this.handlelogin}  name={"Login / Register"}/>
+                        <SubmitButton handlesubmit={this.handlelogin}  name={"Login/Register"}/>
 
                     </section>
                 </Paper>
