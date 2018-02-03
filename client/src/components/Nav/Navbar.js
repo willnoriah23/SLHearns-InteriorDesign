@@ -5,6 +5,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 const style = {
     textDecoration: 'none',
+    color: 'black'
 }
 
 
@@ -32,11 +33,18 @@ class DrawerUndockedExample extends React.Component {
                   open={this.state.open}
                   onRequestChange={(open) => this.setState({open})}
               >
-                  <MenuItem onClick={this.handleClose}><a style={style} href="/">Home</a></MenuItem>
+                <MenuItem onClick={this.handleClose}><a style={style} href="/">Home</a></MenuItem>
+          
                 <MenuItem onClick={this.handleClose}><a style={style} href="/portfolio">Portfolio</a></MenuItem>
+            
                 <MenuItem onClick={this.handleClose}><a style={style} href="/questions">Questionnaire</a></MenuItem>
+               
                 <MenuItem onClick={this.handleClose}><a style={style} href="/services">Services</a></MenuItem>
+              
                 <MenuItem onClick={this.handleClose}><a style={style} href="/contact">Contact</a></MenuItem>
+
+                <MenuItem onClick={this.handleClose}><a style={style} href="/login">Login</a></MenuItem>
+                       
               </Drawer>
             </div>
         );

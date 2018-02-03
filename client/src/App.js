@@ -6,6 +6,9 @@ import Portfolio from "./pages/Portfolio";
 // import AdminUsers from "./components/AdminUsers";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+
 
 
 const App = () =>
@@ -18,7 +21,10 @@ const App = () =>
           <Route exact path="/portfolio" component={Portfolio} />
           <Route exact path="/services" component={Services} />
           <Route exact path="/contact" component={Contact} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
           {/*<Route component={NoMatch} />*/}
+          <Route exact path="/login" component={Login} />
         </Switch>
       </div>
     </Router>;

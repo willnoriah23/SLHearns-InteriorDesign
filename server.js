@@ -10,8 +10,13 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/SLHearnsDB";
 require('dotenv').config();
 
 
+<<<<<<< HEAD
 const index = require('./routes/index');
 const auth = require('./routes/authRoutes');
+=======
+// const index = require('./routes/index');
+// const auth = require('./routes/authRoutes');
+>>>>>>> c736655359a66047537c6cebef0cc48ea7e1d65b
 const users = require('./routes/userRoutes');
 
 
@@ -34,8 +39,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'client/build')));
 
+<<<<<<< HEAD
 app.use('/api/', index);
-app.use('/api/', auth);
+app.use('/api/auth', auth);
+=======
+
+// app.use('/api/', index);
+app.use('/api/', users);
+>>>>>>> c736655359a66047537c6cebef0cc48ea7e1d65b
 app.get('*', (res, req) => {
 	res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });

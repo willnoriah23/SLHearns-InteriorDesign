@@ -7,12 +7,18 @@ import Divider from 'material-ui/Divider';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Blurb from "../../Blurb/Blurb.js"
 import Paper from "material-ui/Paper";
+import "./Services.css";
+
+
+const style = {
+    backgroundColor: "#E0E0E0"
+}
 
 class Services extends React.Component {
 
 
     render () {
-        const newArray = ServImg.map((area) => {return(<div><ImgDiv images={area.kitchen} blurb={Blurb[ServImg.indexOf(area)]}/><br/><ImgDiv images={area.bath} blurb={Blurb[ServImg.indexOf(area)]}/></div>)});
+        const newArray = ServImg.map((area) => {return(<div><ImgDiv images={area.kitchen} blurb={Blurb[ServImg.indexOf(area)]}/><br/><ImgDiv images={area.bath} /></div>)});
 
             // Object.keys(ServImg).forEach((key) => {
             // console.log(ServImg[key]);
@@ -30,7 +36,8 @@ class Services extends React.Component {
                     Design styles are as varied as personalities, but most usually are branches from one of the following three: </div>
 
                 <Divider />
-                <Paper className="pap" zDepth={2}>
+                <Paper style={style} zDepth={3}>
+                <br />
                 {newArray}
                 </Paper>
 

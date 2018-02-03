@@ -1,12 +1,22 @@
 import React from 'react';
 import axios from 'axios';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {Link} from 'react-router-dom';
+import Logo from "../../components/Logo";
+import "./Login.css";
+
+import RegisterButton from "../../components/Button";
+
 
 class Login extends React.Component {
   constructor () {
     super();
     this.state = {}
   }
+
+  handleRegister = () => {
+    document.location.href="/register";
+};
 
   getValue = (event) => {
     // Updates the input state
@@ -15,48 +25,53 @@ class Login extends React.Component {
         [event.target.name]: event.target.value
       }
     );
-  }
+  };
 
   sendData = (event) => {
     // Keep the page from refreshing
     event.preventDefault();
-
-    axios.post('/register', this.state)
+    axios.post('/api/login', this.state)
       .then((data) => {
-        console.log(data);
-        this.props.history.push("/login")
+        localStorage.loggedin = true;
+        this.props.history.push("/")
       })
       .catch((err) => {
         console.log("Error", err.response);
       })
-  }
+  };
 
   render() {
     return (
-      <div>
-        <h1>Registration Page</h1>
-        <form>
-          <input
-          type="text"
-          name="fullname"
-          onChange={this.getValue} />
-          <br />
 
+      <div>
+
+      <MuiThemeProvider>
+        <Logo />
+
+     
+        <h1>Login</h1>
+        <form className="logForm">
           <input
           type="email"
           name="email"
+          placeholder="Email"
           onChange={this.getValue} />
           <br />
-
           <input
           type="password"
           name="password"
+          placeholder="Password"
           onChange={this.getValue} />
           <br />
-
-          <Link to="/register"><button onClick={this.sendData}>Login</button></Link>
+          <br />
+          <RegisterButton name={"login"} handlesubmit={this.sendData} />
+          <br />
+          <RegisterButton name={"Register"} handlesubmit={this.handleRegister} />
         </form>
-      </div>
+
+      </MuiThemeProvider>
+
+     </div>    
     )
   }
 }

@@ -11,12 +11,26 @@ body {
     margin-top: 10px;
 }
 
-.blurb {
+.blurbarea {
     text-align: center;
+   /* color: #fff;*/
+    font-weight: bold;
 }
 
 .pap {
+    margin-top: 40px;
     margin-left: 100px;
     margin-right: 100px;
-    height: auto;
+    height: 100%;
+}
+
+.ptagsha {
+    text-align: center;
+    font-family: 'Yantramanav', sans-serif;
+    font-size: 15px;
+    font-style: italic;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-right: 100px;
+    margin-left: 100px;
 }

@@ -3,4 +3,4 @@
 module.exports = {
 	User: require("./userModel"),
 	Room: require("./roomModel")
-}
+};

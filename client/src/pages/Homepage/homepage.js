@@ -11,7 +11,7 @@ import Logo from "../../components/Logo";
 
 const PREFIX_URL = 'http://res.cloudinary.com/noriahjwill/image/upload/';
 
-class Homepage extends Component {
+class Home extends Component {
 
     constructor() {
         super();
@@ -91,11 +91,11 @@ class Homepage extends Component {
             <MuiThemeProvider>
                 <Nav />
                 <Logo />
-                {/*<section className='app'>*/}
+                <section className='app'>
 
                     <div className="imageGallery">
                         <ImageGallery
-                            autoPlay={false}
+                            autoPlay={true}
                             disableArrowKeys={true}
                             ref={i => this._imageGallery = i}
                             items={this.images}
@@ -119,12 +119,24 @@ class Homepage extends Component {
                             slideOnThumbnailHover={this.state.slideOnThumbnailHover}
                             additionalClass="app-image-gallery"
                         />
+
+                    <div className="homeIntro">
+                        <span id="spec">Kitchen & Bath Renovation Specialist</span> 
                     </div>
 
-                {/*</section>*/}
+            </div>
+
+               
+                
+                </section>
+            
+
             </MuiThemeProvider>
+
+
+
         );
     }
 }
 
-export default Homepage;
+export default Home;
