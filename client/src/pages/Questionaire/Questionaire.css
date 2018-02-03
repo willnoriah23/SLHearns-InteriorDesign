@@ -1,7 +1,10 @@
-/*body {
-  background-color: #E0D7C9;
+.introBlurb {
+    font-family: 'Yantramanav', sans-serif;
+    font-size: 15px;
+    font-style: italic;       
+    text-align: center; 
 }
-*/
+
 
 h2 {
     font-size: 10px;
