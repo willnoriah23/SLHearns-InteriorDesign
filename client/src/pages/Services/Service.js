@@ -37,6 +37,7 @@ class Services extends React.Component {
 
                 <Divider />
                 <Paper style={style} zDepth={3}>
+                <br />
                 {newArray}
                 </Paper>
 

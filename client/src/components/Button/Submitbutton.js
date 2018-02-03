@@ -1,19 +1,19 @@
 import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
+import {grey500} from 'material-ui/styles/colors';
+import "./Submitbutton.css";
 
 const style = {
-    margin: 12,
+    backgroundColor: grey500,
+    labelColor: grey500
+
 };
 
 const Submitbutton = (props) => (
-    <div>
-        {/*<RaisedButton label="Default" style={style} />*/}
-        <RaisedButton label={props.name} onClick={props.handlesubmit} primary={true} style={style}  />
-        {/*<RaisedButton label="Secondary" secondary={true} style={style} />*/}
-        {/*<RaisedButton label="Disabled" disabled={true} style={style} />*/}
-        {/*<br />*/}
-        {/*<br />*/}
-        {/*<RaisedButton label="Full width" fullWidth={true} />*/}
+    <div className="btn">
+      
+        <RaisedButton label={props.name} onClick={props.handlesubmit}  style={style}  />
+       
     </div>
 );
 

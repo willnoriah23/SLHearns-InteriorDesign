@@ -119,11 +119,22 @@ class Home extends Component {
                             slideOnThumbnailHover={this.state.slideOnThumbnailHover}
                             additionalClass="app-image-gallery"
                         />
+
+                    <div className="homeIntro">
+                        <span id="spec">Kitchen & Bath Renovation Specialist</span> 
                     </div>
 
+            </div>
+
+               
+                
                 </section>
-             
+            
+
             </MuiThemeProvider>
+
+
+
         );
     }
 }

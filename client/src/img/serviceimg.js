@@ -10,8 +10,8 @@ export default  [
     {
         kitchen: ["http://res.cloudinary.com/noriahjwill/image/upload/v1516852848/BA_KitchenTransitionalBefore_qoagma.jpg",
             "http://res.cloudinary.com/noriahjwill/image/upload/v1516852849/BA_KitchenTransitionalAfter_mwa95d.jpg"],
-        bath: ["http://res.cloudinary.com/noriahjwill/image/upload/v1516852848/BA_KitchenTransitionalBefore_qoagma.jpg",
-            "http://res.cloudinary.com/noriahjwill/image/upload/v1516852849/BA_KitchenTransitionalAfter_mwa95d.jpg"]
+        bath: ["http://res.cloudinary.com/noriahjwill/image/upload/v1516852842/BA_BathroomTransitionalBefore_ozqefm.jpg",
+            "http://res.cloudinary.com/noriahjwill/image/upload/v1516852842/BA_BathroomTransitionalAfter_v4iraj.jpg"]
     },
 
     {

@@ -10,10 +10,22 @@ import "./Questionaire.css";
 import Imageupload from "../../components/Imageupload";
 import Paper from 'material-ui/Paper';
 import API from "../../utils/API.js";
-import Header from "../../components/Header";
 import Nav from "../../components/Nav";
 import Logo from "../../components/Logo";
+import {grey500} from 'material-ui/styles/colors';
 
+
+const styles = {
+  underlineStyle: {
+    borderColor: grey500
+  },
+  floatingLabelStyle: {
+    color: grey500,
+  },
+  floatingLabelFocusStyle: {
+    color: grey500,
+  },
+};
 
 
 class Questionaire extends Component {
@@ -154,13 +166,13 @@ class Questionaire extends Component {
                 <Nav />
                 <Logo />
                 <br />
-                <Paper>
-                    <section>
-                        Please complete the questionnaire below with all the necessary information about your project.\n To upload accompanying photos, please register.
-
-
+            
+                    <section className="introBlurb">
+                        Interested in renovating your kitchen or bath? Please complete the questionnaire below with all the necessary information about your project.
+                        <br />
+                        To upload accompanying photos, please register.
                     </section>
-                </Paper>
+              
                 <br />
 
                 <Paper zDepth={2} className="pap">
@@ -171,7 +183,8 @@ class Questionaire extends Component {
                             name={"name"}
                             id={"name"}
                             floatingLabelText="Name"
-                            errorText="Please enter your name."
+                            floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+                            underlineFocusStyle={styles.underlineStyle}
                             fullWidth={true}
                             onChange={this.handleNameChange}
                         /><br/>
@@ -180,7 +193,8 @@ class Questionaire extends Component {
                             name="email"
                             id="email"
                             floatingLabelText="Email"
-                            errorText="Please enter your email address."
+                            floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+                            underlineFocusStyle={styles.underlineStyle}
                             fullWidth={true}
                             onChange={this.handleEmailChange}
                         /><br/>
@@ -188,8 +202,9 @@ class Questionaire extends Component {
                             hintText="Address."
                             name="address"
                             id="address"
-                            floatingLabelText="Please provide your address."
-                            errorText="Please provide your address."
+                            floatingLabelText="Address"
+                            floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+                            underlineFocusStyle={styles.underlineStyle}
                             multiLine={true}
                             rows={1}
                             rowsMax={2}
@@ -201,7 +216,9 @@ class Questionaire extends Component {
                             hintText="Phone Number"
                             name="phonenum"
                             id="phonenum"
-                            errorText="Please enter your phone number."
+                            floatingLabelText="Phone Number"
+                            floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+                            underlineFocusStyle={styles.underlineStyle}
                             fullWidth={true}
                             onChange={this.handlePhoneChange}
                         /><br/>
@@ -237,21 +254,23 @@ class Questionaire extends Component {
                         <br />
 
                         <TextField
-                            hintText="Family Size"
+                            hintText="Number of people in your household."
                             name="famsize"
                             id="famsize"
                             floatingLabelText="Family Size"
-                            errorText="Please provide the size of your family."
+                            floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+                            underlineFocusStyle={styles.underlineStyle}
                             fullWidth={true}
                             onChange={this.handleFamSizeChange}
                         /><br/>
 
                         <TextField
-                            hintText="Please provide three(3) things you love about the current design."
+                            hintText="List three things you love about the current design of your space."
                             name="love3"
                             id="love3"
-                            floatingLabelText="Three things you love."
-                            errorText="Please provide at least one thing you currently love."
+                            floatingLabelText="Three things you love"
+                            floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+                            underlineFocusStyle={styles.underlineStyle}
                             multiLine={true}
                             rows={1}
                             rowsMax={4}
@@ -260,11 +279,12 @@ class Questionaire extends Component {
 
                         /><br/>
                         <TextField
-                            hintText="Please provide three(3) things you do not love about the current design."
+                            hintText="Please list three things you do not love about the current design of your space."
                             name="dontlove3"
                             id="dontlove3"
-                            floatingLabelText="Three things you do not love."
-                            errorText="Please provide at least one thing you currently do not love."
+                            floatingLabelText="Three things you do not love"
+                            floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+                            underlineFocusStyle={styles.underlineStyle}
                             multiLine={true}
                             rows={1}
                             rowsMax={4}
@@ -273,8 +293,10 @@ class Questionaire extends Component {
                         /><br/>
                         {this.state.logged_in === true ? <Imageupload handleupload={this.handlesubmit}/> : ""}
                         {/*{this.state.logged_in === false && <Imageupload fullWidth={true} handlesubmit={this.handlesubmit}/>}*/}
-
+                        <br />
+                        <br />
                         <SubmitButton handlesubmit={this.handleformsubmit} name={"Submit Form"}/>
+                        <br />
                         <SubmitButton handlesubmit={this.handlelogin}  name={"Login/Register"}/>
 
                     </section>

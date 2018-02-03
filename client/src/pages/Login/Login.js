@@ -2,7 +2,11 @@ import React from 'react';
 import axios from 'axios';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {Link} from 'react-router-dom';
+import Logo from "../../components/Logo";
+import "./Login.css";
+
 import RegisterButton from "../../components/Button";
+
 
 class Login extends React.Component {
   constructor () {
@@ -38,25 +42,36 @@ class Login extends React.Component {
 
   render() {
     return (
+
+      <div>
+
       <MuiThemeProvider>
-        <h1>Login Page</h1>
-        <form>
+        <Logo />
+
+     
+        <h1>Login</h1>
+        <form className="logForm">
           <input
           type="email"
           name="email"
+          placeholder="Email"
           onChange={this.getValue} />
           <br />
-
           <input
           type="password"
           name="password"
+          placeholder="Password"
           onChange={this.getValue} />
           <br />
-
-          <Link to="/login"><button onClick={this.sendData}>Login</button></Link>
+          <br />
+          <RegisterButton name={"login"} handlesubmit={this.sendData} />
+          <br />
           <RegisterButton name={"Register"} handlesubmit={this.handleRegister} />
         </form>
+
       </MuiThemeProvider>
+
+     </div>    
     )
   }
 }

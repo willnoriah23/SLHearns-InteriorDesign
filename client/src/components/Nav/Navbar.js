@@ -42,7 +42,9 @@ class DrawerUndockedExample extends React.Component {
                 <MenuItem onClick={this.handleClose}><a style={style} href="/services">Services</a></MenuItem>
               
                 <MenuItem onClick={this.handleClose}><a style={style} href="/contact">Contact</a></MenuItem>
-                  <MenuItem onClick={this.handleClose}><a style={style} href="/login">Log-in</a></MenuItem>
+
+                <MenuItem onClick={this.handleClose}><a style={style} href="/login">Login</a></MenuItem>
+                       
               </Drawer>
             </div>
         );

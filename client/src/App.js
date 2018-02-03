@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 
 
+
 const App = () =>
 
     <Router>
@@ -23,6 +24,7 @@ const App = () =>
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           {/*<Route component={NoMatch} />*/}
+          <Route exact path="/login" component={Login} />
         </Switch>
       </div>
     </Router>;
