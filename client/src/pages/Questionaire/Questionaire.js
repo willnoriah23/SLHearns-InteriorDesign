@@ -291,6 +291,7 @@ class Questionaire extends Component {
                             fullWidth={true}
                             onChange={this.handleDLove3Change}
                         /><br/>
+                        <br />
                         {this.state.logged_in === true ? <Imageupload handleupload={this.handlesubmit}/> : ""}
                         {/*{this.state.logged_in === false && <Imageupload fullWidth={true} handlesubmit={this.handlesubmit}/>}*/}
                         <br />
