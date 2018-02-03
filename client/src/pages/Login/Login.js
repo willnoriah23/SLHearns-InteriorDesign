@@ -33,7 +33,7 @@ class Login extends React.Component {
     axios.post('/api/login', this.state)
       .then((data) => {
         localStorage.loggedin = true;
-        this.props.history.push("/")
+        this.props.history.push("questionnaire")
       })
       .catch((err) => {
         console.log("Error", err.response);
