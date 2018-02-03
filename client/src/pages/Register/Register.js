@@ -38,7 +38,6 @@ class Login extends React.Component {
   render() {
     return (
       <div>
-
       <MuiThemeProvider>
 
       <Logo />
@@ -46,6 +45,7 @@ class Login extends React.Component {
         <h1>Registration</h1>
         <form className="regisForm">
           <input
+          id="fullname"
           type="text"
           name="fullname"
           placeholder="Full Name"
