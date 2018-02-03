@@ -11,9 +11,10 @@ body {
     margin-top: 10px;
 }
 
-.blurb {
+.blurbarea {
     text-align: center;
-    color: #fff;
+   /* color: #fff;*/
+    font-weight: bold;
 }
 
 .pap {

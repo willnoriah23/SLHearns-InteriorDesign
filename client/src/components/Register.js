@@ -34,6 +34,7 @@ class Login extends React.Component {
   render() {
     return (
       <div>
+      <Logo />
         <h1>Registration Page</h1>
         <form>
           <input

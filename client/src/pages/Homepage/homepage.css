@@ -41,6 +41,25 @@
   margin-top: 10px;
 }
 
+
+.homeIntro {
+  text-align: center;
+  font-size: 30px;
+  /*font-style: italic;*/
+  color: white;
+  margin-top: -85px;
+  margin-bottom: 50px;
+  position: relative;
+  padding-top: 10px;
+  z-index: 1;
+
+
+}
+#spec {
+   background-color: black;
+   opacity: 0.6 ;
+   letter-spacing: 3px; 
+}
 /*# CSS*/
 @import "../../../node_modules/react-image-gallery/styles/css/image-gallery.css";
 
