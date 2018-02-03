@@ -26,11 +26,10 @@ class Login extends React.Component {
   sendData = (event) => {
     // Keep the page from refreshing
     event.preventDefault();
-    console.log("state", this.state);
-
     axios.post('/api/login', this.state)
       .then((data) => {
-        this.props.history.push("/users")
+        localStorage.loggedin = true;
+        this.props.history.push("/")
       })
       .catch((err) => {
         console.log("Error", err.response);
