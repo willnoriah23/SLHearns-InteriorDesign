@@ -11,6 +11,8 @@ import Imageupload from "../../components/Imageupload";
 import Paper from 'material-ui/Paper';
 import API from "../../utils/API.js";
 import Header from "../../components/Header";
+import Nav from "../../components/Nav";
+import Logo from "../../components/Logo";
 
 
 
@@ -146,7 +148,8 @@ class Questionaire extends Component {
         return (
 
             <MuiThemeProvider>
-                <Header/>
+                <Nav />
+                <Logo />
                 <br />
                 <Paper>
                     <section>
